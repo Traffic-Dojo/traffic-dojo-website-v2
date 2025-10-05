@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@import "./fonts.css";
+
+@theme {
+  --font-sans: "Guaruja Neue", "system-ui", "sans-serif";
+
+  --color-background: rgba(25, 25, 25, 1);
+  --color-textLight: rgba(255, 255, 255, 1);
+  --color-textDark: rgba(32, 32, 32, 1);
+  --color-textGray: rgba(255, 255, 255, 0.5);
+  --color-accent: rgba(255, 168, 0, 1);
+  --color-modalText: rgba(43, 43, 43, 1);
+  --color-modalAccent: rgba(171, 252, 199, 1);
+  --color-modalGrey: rgba(237, 237, 237, 1);
+  --color-modalSecondaryGrey: rgba(105, 105, 105, 1);
+}
+
+html {
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  overflow-x: hidden;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+  -webkit-appearance: none;
+}
