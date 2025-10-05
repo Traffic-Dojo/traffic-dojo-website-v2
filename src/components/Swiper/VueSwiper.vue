@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import 'swiper/css'
-import { ref } from 'vue'
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import type { Swiper as SwiperType } from 'swiper'
+import "swiper/css";
+import { ref } from "vue";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import type { Swiper as SwiperType } from "swiper";
 
 defineProps({
   slides: {
     type: Number,
     required: true,
   },
-})
+});
 
-const activeIndex = ref(0)
+const activeIndex = ref(0);
 
 function onInnerSwiperSlideChange(swiper: SwiperType) {
-  activeIndex.value = swiper.activeIndex
+  activeIndex.value = swiper.activeIndex;
 }
 </script>
 
@@ -35,7 +35,11 @@ function onInnerSwiperSlideChange(swiper: SwiperType) {
         :nested="true"
         @slide-change="onInnerSwiperSlideChange"
       >
-        <SwiperSlide v-for="slide in slides" :key="slide" class="hidden"></SwiperSlide>
+        <SwiperSlide
+          v-for="slide in slides"
+          :key="slide"
+          class="hidden"
+        ></SwiperSlide>
       </Swiper>
     </SwiperSlide>
 
