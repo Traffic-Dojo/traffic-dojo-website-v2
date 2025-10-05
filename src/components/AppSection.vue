@@ -1,0 +1,27 @@
+<script lang="ts" setup>
+import { twMerge } from "tailwind-merge";
+import { motion } from "motion-v";
+
+defineProps({
+  className: {
+    type: String,
+    required: false,
+  },
+});
+</script>
+
+<template>
+  <motion.div
+    class="absolute inset-0 -z-10"
+    :initial="{ opacity: 0 }"
+    :while-in-view="{ opacity: 1 }"
+    :in-view-options="{ margin: '-200px 0px' }"
+    :transition="{ duration: 1.6 }"
+  >
+    <slot name="gradients" />
+  </motion.div>
+
+  <section :class="twMerge('h-full', className)">
+    <slot />
+  </section>
+</template>

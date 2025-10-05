@@ -1,10 +1,7 @@
 ---
-import {Swiper} from 'swiper/vue';
 import Layout from '../layouts/Layout.astro';
-import SlideIntroduction from '../slides/SlideIntroduction.vue';
+import HomePresentation from '../components/HomePresentation.vue';
 ---
 <Layout>
-	<Swiper client:load>
-		<SlideIntroduction client:load />
-	</Swiper>
+	<HomePresentation client:load />
 </Layout>

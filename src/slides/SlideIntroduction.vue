@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppSlide from "../components/AppSlide.vue";
+import AppSlide from "../components/AppSection.vue";
 import CTAButton from "../components/CTAButton.vue";
 import { motion, stagger, type VariantType } from "motion-v";
 
