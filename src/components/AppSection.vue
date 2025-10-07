@@ -21,7 +21,7 @@ defineProps({
     <slot name="gradients" />
   </motion.div>
 
-  <section :class="twMerge('h-full', className)">
+  <section :class="twMerge('h-full px-6 py-6 md:px-20', className)">
     <slot />
   </section>
 </template>
