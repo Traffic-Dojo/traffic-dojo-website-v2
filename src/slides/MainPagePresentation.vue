@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import SwiperFixedSlider from "./../components/SwiperFixedSlider.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Mousewheel } from "swiper/modules";
+import { createSwiperConfig } from "../config/swiper";
 
 import SlideIntroduction from "../slides/SlideIntroduction.vue";
 import SlideEnthusiasts from "../slides/SlideEnthusiasts.vue";
@@ -13,29 +13,18 @@ import SlideWhatWeCanDo from "../slides/SlideWhatWeCanDo.vue";
 import "swiper/css";
 import "swiper/css/pagination";
 
-const modules = [Mousewheel];
+const swiperConfig = createSwiperConfig();
 
 /**
  * TODO:
- * - [ ] make a config for Swiper component and put it in one place (direction, class, modules, etc...);
+ * - [x] make a config for Swiper component and put it in one place (direction, class, modules, etc...);
  * - [ ] fix gradient in SlideWhatWeCanDo, make a separate div, instead of using background: gradient
  * - [ ] remove magic numbers (5 in SwiperFixedSlider)
  */
 </script>
 
 <template>
-  <Swiper
-    direction="vertical"
-    class="h-screen"
-    :modules="modules"
-    :mousewheel="{
-      sensitivity: 0.1,
-      thresholdTime: 100,
-      thresholdDelta: 5,
-      enabled: true,
-    }"
-    :speed="800"
-  >
+  <Swiper v-bind="swiperConfig">
     <SwiperSlide>
       <SlideIntroduction />
     </SwiperSlide>

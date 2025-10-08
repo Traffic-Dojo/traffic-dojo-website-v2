@@ -4,7 +4,7 @@ import "swiper/css";
 import { ref } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import type { Swiper as SwiperType } from "swiper";
-import { Mousewheel } from "swiper/modules";
+import { createSwiperConfig } from "../config/swiper";
 
 defineProps({
   slides: {
@@ -12,6 +12,8 @@ defineProps({
     required: true,
   },
 });
+
+const swiperConfig = createSwiperConfig();
 
 const activeSlideIndex = ref(0);
 
@@ -30,8 +32,6 @@ function slideToIndex(index: number) {
     swiperRef.value.slideTo(index);
   }
 }
-
-const modules = [Mousewheel];
 </script>
 
 <template>
@@ -42,17 +42,7 @@ const modules = [Mousewheel];
   </div>
 
   <Swiper
-    class="h-screen w-full"
-    direction="vertical"
-    :nested="true"
-    :modules="modules"
-    :mousewheel="{
-      sensitivity: 0.1,
-      thresholdTime: 100,
-      thresholdDelta: 5,
-      enabled: true,
-    }"
-    :speed="800"
+    v-bind="swiperConfig"
     @swiper="onSwiper"
     @slide-change="onHiddenSwiperChange"
   >
