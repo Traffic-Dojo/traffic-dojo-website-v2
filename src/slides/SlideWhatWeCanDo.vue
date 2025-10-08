@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { motion, stagger, type VariantType } from "motion-v";
 import AppSection from "../components/AppSection.vue";
+import SwiperFixedSlider from "../components/SwiperFixedSlider.vue";
 
 interface ContentItem {
   emote: string;
@@ -8,17 +9,6 @@ interface ContentItem {
   label: string;
   description: string;
 }
-
-defineProps({
-  activeIndex: {
-    type: Number,
-    required: true,
-  },
-});
-
-const emits = defineEmits({
-  fieldClick: (index: number) => index >= 0,
-});
 
 const content: ContentItem[] = [
   {
@@ -81,86 +71,87 @@ const descriptionVariants: Record<string, VariantType> = {
   hidden: { opacity: 0, y: -40, transition: { duration: 1 } },
   visible: { opacity: 1, y: 0, transition: { duration: 1.5 } },
 };
-
-const handleFieldClick = (index: number) => {
-  emits("fieldClick", index);
-};
 </script>
 
 <template>
-  <AppSection
-    class-name="px-6 relative flex items-center justify-center md:px-20"
-  >
-    <template #gradients>
-      <motion.div
-        class="gradient-blue absolute"
-        :variants="gradientVariants"
-        initial="hidden"
-        while-in-view="visible"
-      ></motion.div>
-    </template>
-
-    <div class="mx-auto">
-      <motion.h2
-        class="mb-6 text-4xl font-medium sm:text-6xl md:mb-14"
-        :variants="headingVariants"
-        initial="hidden"
-        while-in-view="visible"
+  <SwiperFixedSlider :slides="content.length">
+    <template #default="{ activeSlideIndex, slideToIndex }">
+      <AppSection
+        class-name="px-6 relative flex items-center justify-center md:px-20"
       >
-        What we can do
-      </motion.h2>
-
-      <div
-        class="flex flex-col gap-8 lg:grid lg:grid-cols-[2fr_3fr] lg:grid-rows-[min-content_fit-content] lg:content-center lg:gap-x-4 lg:gap-y-28"
-      >
-        <motion.div
-          class="flex max-w-[700px] flex-wrap gap-4 py-2 lg:grid lg:gap-8"
-          :variants="fieldsVariants"
-          initial="hidden"
-          while-in-view="visible"
-        >
+        <template #gradients>
           <motion.div
-            v-for="(item, i) in content"
-            :key="item.label"
-            v-show="item.emote"
-            class="grid grid-cols-[auto_auto_1fr] items-center gap-3 after:h-[1px] after:origin-left after:scale-x-0 after:bg-white after:transition-all after:duration-1000 md:gap-4"
-            :class="{ 'after:scale-x-100': activeIndex === i }"
-            :variants="fieldsVariants"
-          >
-            <img
-              class="aspect-square h-[15px] object-center sm:h-[22px] lg:h-[28px]"
-              :src="item.emote"
-              :alt="item.emoteLabel"
-            />
+            class="gradient-blue absolute"
+            :variants="gradientVariants"
+            initial="hidden"
+            while-in-view="visible"
+          ></motion.div>
+        </template>
 
-            <button
-              @click="handleFieldClick(i)"
-              class="field pointer-events-auto relative cursor-pointer rounded-full px-3 py-2 text-sm transition-all duration-500 ease-in-out md:px-5 md:py-[14px] lg:px-7 lg:text-lg"
-              :class="{
-                'text-textDark bg-white shadow-[0px_0px_30px_5px_rgba(255,255,255,0.3)]':
-                  activeIndex === i,
-                'shadow-none': activeIndex > 0 && activeIndex !== i,
-              }"
-            >
-              {{ item.label }}
-            </button>
-          </motion.div>
-        </motion.div>
-
-        <div>
-          <motion.p
-            :key="activeIndex"
-            class="max-w-[470px] text-sm leading-relaxed font-normal tracking-wide sm:text-base md:max-w-[700px] md:text-lg lg:text-[22px] lg:leading-normal"
-            :variants="descriptionVariants"
+        <div class="mx-auto">
+          <motion.h2
+            class="mb-6 text-4xl font-medium sm:text-6xl md:mb-14"
+            :variants="headingVariants"
             initial="hidden"
             while-in-view="visible"
           >
-            {{ content[activeIndex].description }}
-          </motion.p>
+            What we can do
+          </motion.h2>
+
+          <div
+            class="flex flex-col gap-8 lg:grid lg:grid-cols-[2fr_3fr] lg:grid-rows-[min-content_fit-content] lg:content-center lg:gap-x-4 lg:gap-y-28"
+          >
+            <motion.div
+              class="flex max-w-[700px] flex-wrap gap-4 py-2 lg:grid lg:gap-8"
+              :variants="fieldsVariants"
+              initial="hidden"
+              while-in-view="visible"
+            >
+              <motion.div
+                v-for="(item, i) in content"
+                :key="item.label"
+                v-show="item.emote"
+                class="grid grid-cols-[auto_auto_1fr] items-center gap-3 after:h-[1px] after:origin-left after:scale-x-0 after:bg-white after:transition-all after:duration-1000 md:gap-4"
+                :class="{ 'after:scale-x-100': activeSlideIndex === i }"
+                :variants="fieldsVariants"
+              >
+                <img
+                  class="aspect-square h-[15px] object-center sm:h-[22px] lg:h-[28px]"
+                  :src="item.emote"
+                  :alt="item.emoteLabel"
+                />
+
+                <button
+                  @click="slideToIndex(i)"
+                  class="field pointer-events-auto relative cursor-pointer rounded-full px-3 py-2 text-sm transition-all duration-500 ease-in-out md:px-5 md:py-[14px] lg:px-7 lg:text-lg"
+                  :class="{
+                    'text-textDark bg-white shadow-[0px_0px_30px_5px_rgba(255,255,255,0.3)]':
+                      activeSlideIndex === i,
+                    'shadow-none':
+                      activeSlideIndex > 0 && activeSlideIndex !== i,
+                  }"
+                >
+                  {{ item.label }}
+                </button>
+              </motion.div>
+            </motion.div>
+
+            <div>
+              <motion.p
+                :key="activeSlideIndex"
+                class="max-w-[470px] text-sm leading-relaxed font-normal tracking-wide sm:text-base md:max-w-[700px] md:text-lg lg:text-[22px] lg:leading-normal"
+                :variants="descriptionVariants"
+                initial="hidden"
+                while-in-view="visible"
+              >
+                {{ content[activeSlideIndex].description }}
+              </motion.p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </AppSection>
+      </AppSection>
+    </template>
+  </SwiperFixedSlider>
 </template>
 
 <style scoped>

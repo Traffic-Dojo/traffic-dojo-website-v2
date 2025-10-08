@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import SwiperFixedSlider from "./../components/SwiperFixedSlider.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { createSwiperConfig } from "../config/swiper";
 
@@ -14,13 +13,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 const swiperConfig = createSwiperConfig();
-
-/**
- * TODO:
- * - [x] make a config for Swiper component and put it in one place (direction, class, modules, etc...);
- * - [x] fix gradient in SlideWhatWeCanDo, make a separate div, instead of using background: gradient
- * - [ ] remove magic numbers (5 in SwiperFixedSlider)
- */
 </script>
 
 <template>
@@ -46,14 +38,7 @@ const swiperConfig = createSwiperConfig();
     </SwiperSlide>
 
     <SwiperSlide>
-      <SwiperFixedSlider :slides="5">
-        <template #default="{ activeSlideIndex, slideToIndex }">
-          <SlideWhatWeCanDo
-            :active-index="activeSlideIndex"
-            @field-click="slideToIndex"
-          />
-        </template>
-      </SwiperFixedSlider>
+      <SlideWhatWeCanDo />
     </SwiperSlide>
   </Swiper>
 </template>
