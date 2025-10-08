@@ -12,6 +12,7 @@ import SlideProblems from "../slides/SlideProblems.vue";
 import SlideProposalTime from "../slides/SlideProposalTime.vue";
 import SlideWhatWeCanDo from "../slides/SlideWhatWeCanDo.vue";
 import SlideBusiness from "./SlideBusiness.vue";
+import SlideFooter from "./SlideFooter.vue";
 
 const swiperConfig = createSwiperConfig();
 </script>
@@ -31,7 +32,15 @@ const swiperConfig = createSwiperConfig();
     </SwiperSlide>
 
     <SwiperSlide>
+      <SlideBusiness />
+    </SwiperSlide>
+
+    <SwiperSlide>
       <SlideProblems />
+    </SwiperSlide>
+
+    <SwiperSlide>
+      <SlideWhatWeCanDo />
     </SwiperSlide>
 
     <SwiperSlide>
@@ -39,11 +48,7 @@ const swiperConfig = createSwiperConfig();
     </SwiperSlide>
 
     <SwiperSlide>
-      <SlideBusiness />
-    </SwiperSlide>
-
-    <SwiperSlide>
-      <SlideWhatWeCanDo />
+      <SlideFooter />
     </SwiperSlide>
   </Swiper>
 </template>
