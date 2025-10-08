@@ -75,7 +75,6 @@ const buttonVariants: Record<string, VariantType> = {
   position: absolute;
   width: var(--size);
   height: var(--size);
-  opacity: 0;
   background: radial-gradient(
     50% 50% at 50% 50%,
     rgb(17, 96, 251, 0.9) 0%,

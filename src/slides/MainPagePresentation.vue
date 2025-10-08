@@ -18,7 +18,7 @@ const swiperConfig = createSwiperConfig();
 /**
  * TODO:
  * - [x] make a config for Swiper component and put it in one place (direction, class, modules, etc...);
- * - [ ] fix gradient in SlideWhatWeCanDo, make a separate div, instead of using background: gradient
+ * - [x] fix gradient in SlideWhatWeCanDo, make a separate div, instead of using background: gradient
  * - [ ] remove magic numbers (5 in SwiperFixedSlider)
  */
 </script>

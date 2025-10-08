@@ -59,8 +59,8 @@ const content: ContentItem[] = [
 ];
 
 const gradientVariants: Record<string, VariantType> = {
-  hidden: { opacity: 0, transition: { duration: 1 } },
-  visible: { opacity: 1, transition: { duration: 1 } },
+  hidden: { opacity: 0, transition: { duration: 0.3 } },
+  visible: { opacity: 1, transition: { duration: 2 } },
 };
 
 const headingVariants: Record<string, VariantType> = {
@@ -93,7 +93,7 @@ const handleFieldClick = (index: number) => {
   >
     <template #gradients>
       <motion.div
-        class="gradient-blue"
+        class="gradient-blue absolute"
         :variants="gradientVariants"
         initial="hidden"
         while-in-view="visible"
@@ -135,7 +135,7 @@ const handleFieldClick = (index: number) => {
 
             <button
               @click="handleFieldClick(i)"
-              class="field pointer-events-auto rounded-full px-3 py-2 text-sm md:px-5 md:py-[14px] lg:px-7 lg:text-lg"
+              class="field pointer-events-auto relative cursor-pointer rounded-full px-3 py-2 text-sm transition-all duration-500 ease-in-out md:px-5 md:py-[14px] lg:px-7 lg:text-lg"
               :class="{
                 'text-textDark bg-white shadow-[0px_0px_30px_5px_rgba(255,255,255,0.3)]':
                   activeIndex === i,
@@ -165,35 +165,42 @@ const handleFieldClick = (index: number) => {
 
 <style scoped>
 .gradient-blue {
-  --size: 2000px;
+  --multiplier: 2;
+  --minsize: 400px;
 
-  opacity: 0;
-  position: absolute;
+  --minmax: clamp(var(--minsize), 100%, max(100vh, 100vw));
+  --size: calc(var(--minmax) * var(--multiplier));
+
   width: var(--size);
   height: var(--size);
-  top: 0;
-  left: 0;
-  transform: translateX(-50%);
-  transition: transform 1s ease-in;
+
   background: radial-gradient(
-    50% 50% at 50% 0%,
-    #1160fb 0%,
-    rgba(236, 0, 0, 0) 100%
+    50% 50% at 50% 50%,
+    rgb(17, 96, 251, 0.9) 0%,
+    rgba(255, 0, 229, 0) 100%
   );
+
+  animation: gradient-move 7s ease-in-out infinite alternate;
 }
 
-@media screen and (min-width: 1024px) {
-  .gradient-blue {
-    transform: translateX(-25%);
+@keyframes gradient-move {
+  0% {
+    transform: translateX(-47%) translateY(-50%);
+  }
+
+  50% {
+    transform: translateX(-30%) translateY(-60%);
+  }
+
+  100% {
+    transform: translateX(-30%) translateY(-50%);
   }
 }
 
 .field {
-  transition: all 500ms ease-in-out;
   box-shadow:
     -19.3px 19.3px 19.3px 0px rgba(255, 255, 255, 0.1) inset,
     19.3px -19.3px 19.3px 0px rgba(164, 163, 163, 0.1) inset;
-  cursor: pointer;
 }
 
 .field:hover {
@@ -203,7 +210,7 @@ const handleFieldClick = (index: number) => {
     0px 0px 28.05px 0px rgba(65, 114, 239, 1);
 }
 
-/* .field::before {
+.field::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -222,7 +229,7 @@ const handleFieldClick = (index: number) => {
   border-radius: 9999px;
 
   animation: gradientAnimation ease-in-out 5s infinite backwards;
-} */
+}
 
 @keyframes gradientAnimation {
   0% {
