@@ -169,33 +169,33 @@ const contentVariants: Record<string, VariantType> = {
 <style scoped>
 .spark {
   z-index: 999999999;
-  transform: translateY(8svh) translateX(40%);
+  transform: translateY(12vh) translateX(40%);
   background: url("/images/spark.png") no-repeat center bottom / contain;
   mix-blend-mode: lighten;
 }
 
 .earth {
   mix-blend-mode: screen;
-  background: url("/images/earth.png") no-repeat 50% 105% / contain;
+  background: url("/images/earth.png") no-repeat 50% 100% / contain;
   /* background: url("/images/earth.png") no-repeat 50% 105% / contain; */
 }
 
 .colors {
-  --size: calc(min(200svh, calc((100svh + 100svw) / 0.3)) * 2);
+  --multiplier: 2;
+  --minsize: 400px;
+
+  --minmax: clamp(var(--minsize), 100%, max(100vh, 100vw));
+  --size: calc(var(--minmax) * var(--multiplier));
 
   width: var(--size);
   height: var(--size);
 
-  position: absolute;
-  top: 0%;
-  left: 50%;
-
-  transform: translateX(-30%) translateY(-60%);
+  transform: translateY(-25%);
 
   background: radial-gradient(
-    50% 50% at 50% 50%,
-    rgba(17, 96, 251, 1) 0%,
-    rgba(24, 24, 24, 1) 100%
+    47% 47% at 50% 50%,
+    rgb(17, 96, 251, 0.9) 0%,
+    rgba(255, 0, 229, 0) 100%
   );
 }
 
@@ -203,7 +203,7 @@ const contentVariants: Record<string, VariantType> = {
   width: clamp(80px, 2.0916rem + 8.1425vw, 126px);
 }
 
-@media screen and (max-width: 1024px) {
+/* @media screen and (max-width: 1024px) {
   .spark {
     display: none;
   }
@@ -213,23 +213,26 @@ const contentVariants: Record<string, VariantType> = {
   }
 
   .colors {
-    inset: unset;
-    top: 0;
-    left: 0;
-    width: 200svh;
-    height: 100svh;
-    transform: translateY(0%) translateX(-10%);
+    --multiplier: 2;
+    --minsize: 400px;
+
+    --minmax: clamp(var(--minsize), 100%, max(100vh, 100vw));
+    --size: calc(var(--minmax) * var(--multiplier));
+
+    width: var(--size);
+    height: var(--size);
+
     background:
       radial-gradient(
-        50% 60% at 65% 50%,
+        50% 50% at 65% 50%,
         rgba(236, 204, 255, 0.5) 0%,
         rgba(24, 24, 24, 0) 100%
       ),
       radial-gradient(
-        100% 70% at 80% 50%,
+        100% 50% at 80% 50%,
         rgba(17, 96, 251, 1) 0%,
         rgba(24, 24, 24, 1) 100%
       );
   }
-}
+} */
 </style>

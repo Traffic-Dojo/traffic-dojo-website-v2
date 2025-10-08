@@ -22,8 +22,6 @@ const variants: Record<string, VariantType> = {
     },
   },
 };
-
-// TODO: add modal popup handle and analytics handle
 </script>
 
 <template>
@@ -79,70 +77,83 @@ const variants: Record<string, VariantType> = {
 <style scoped>
 .gradient-blue,
 .gradient-pink {
-  --size: min(200svh, calc((100svh + 100svw) / 0.3));
+  --multiplier: 1.3;
+  --minsize: 400px;
 
-  --x1: -75%;
-  --x2: -50%;
-  --x3: -20%;
+  --minmax: clamp(var(--minsize), 100%, max(100vh, 100vw));
+  --size: calc(var(--minmax) * var(--multiplier));
 
-  --y1: -57%;
-  --y2: -53%;
+  position: absolute;
 
   width: var(--size);
   height: var(--size);
 
-  position: absolute;
-  top: 0%;
+  top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .gradient-blue {
   background: radial-gradient(
     50% 50% at 50% 50%,
-    #1160fb 0%,
-    rgba(255, 0, 229, 0) 100%
+    var(--color-gradient-blue),
+    transparent
   );
-  transform: translateX(var(--x1)) translateY(var(--y1)) scale(1);
   animation: gradient-blue-animation 10s ease infinite alternate;
-}
-
-.gradient-pink {
-  mix-blend-mode: exclusion;
-  opacity: 80%;
-  transform: translateX(var(--x3)) translateY(var(--y1)) scale(1);
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    #ff00e6 0%,
-    rgba(255, 0, 229, 0) 100%
-  );
-  animation: gradient-pink-animation 10s ease infinite alternate;
 }
 
 @keyframes gradient-blue-animation {
   0% {
-    transform: translateX(var(--x1)) translateY(var(--y1)) scale(1);
+    transform: translateX(-64%) translateY(-65%) scale(1);
+  }
+
+  25% {
+    transform: translateX(-60%) translateY(-60%) scale(1.2);
   }
 
   50% {
-    transform: translateX(var(--x2)) translateY(var(--y2)) scale(1.1);
+    transform: translateX(-55%) translateY(-45%) scale(1.1);
+  }
+
+  75% {
+    transform: translateX(-40%) translateY(-54%) scale(1);
   }
 
   100% {
-    transform: translateX(var(--x3)) translateY(var(--y1)) scale(1);
+    transform: translateX(-36%) translateY(-62%) scale(1.1);
   }
+}
+
+.gradient-pink {
+  mix-blend-mode: exclusion;
+  opacity: 75%;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    var(--color-gradient-pink),
+    transparent
+  );
+  animation: gradient-pink-animation 15s ease infinite alternate;
 }
 
 @keyframes gradient-pink-animation {
   0% {
-    transform: translateX(var(--x3)) translateY(var(--y1)) scale(1);
+    transform: translateX(-36%) translateY(-65%) scale(1.1);
+  }
+
+  25% {
+    transform: translateX(-46%) translateY(-55%) scale(0.9);
   }
 
   50% {
-    transform: translateX(var(--x2)) translateY(var(--y2)) scale(1.1);
+    transform: translateX(-48%) translateY(-52%) scale(1.1);
+  }
+
+  75% {
+    transform: translateX(-55%) translateY(-56%) scale(1.1);
   }
 
   100% {
-    transform: translateX(var(--x1)) translateY(var(--y1)) scale(1);
+    transform: translateX(-64%) translateY(-60%) scale(1);
   }
 }
 </style>

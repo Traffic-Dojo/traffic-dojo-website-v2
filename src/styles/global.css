@@ -14,7 +14,8 @@
   --color-modalGrey: rgba(237, 237, 237, 1);
   --color-modalSecondaryGrey: rgba(105, 105, 105, 1);
 
-  /* TODO: add gradient and other used colors on the website */
+  --color-gradient-blue: rgba(17, 96, 251, 1);
+  --color-gradient-pink: rgba(255, 0, 230, 1);
 }
 
 html {

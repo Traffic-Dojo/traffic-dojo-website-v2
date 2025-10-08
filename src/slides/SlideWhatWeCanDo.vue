@@ -167,8 +167,8 @@ const descriptionVariants: Record<string, VariantType> = {
 
   background: radial-gradient(
     50% 50% at 50% 50%,
-    rgb(17, 96, 251, 0.9) 0%,
-    rgba(255, 0, 229, 0) 100%
+    var(--color-gradient-blue),
+    transparent
   );
 
   animation: gradient-move 7s ease-in-out infinite alternate;
