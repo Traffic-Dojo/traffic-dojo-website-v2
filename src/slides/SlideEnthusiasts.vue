@@ -27,7 +27,7 @@ import { motion } from "motion-v";
 
         <motion.img
           src="/images/statue.png"
-          class="absolute right-0 z-[10] h-[115%] max-h-[1200px] min-h-[400px] translate-x-[24%] rotate-3 md:h-[125svh] md:rotate-0 md:object-contain"
+          class="absolute right-0 z-[10] h-[100%] max-h-[1100px] min-h-[400px] translate-x-[24%] rotate-3 md:h-[125svh] md:rotate-0 md:object-contain"
           alt="Statue of Freedom"
           :variants="{
             hidden: { x: 40, opacity: 0, transition: { duration: 0.8 } },
@@ -71,7 +71,7 @@ import { motion } from "motion-v";
           >
             With over
             <span
-              class="border-textLight rounded-full border bg-[rgba(20,73,177,0.6)] px-4 py-1 whitespace-nowrap shadow-[0px_0px_15px_2px_rgba(255,255,255,0.4)]"
+              class="bg-gradient-blue/20 rounded-full border border-white px-4 py-1 whitespace-nowrap shadow-[0px_0px_15px_2px_rgba(255,255,255,0.4)]"
               >5 years of extensive experience</span
             >
             in affiliate marketing and a focus on crafting strategic marketing
@@ -91,16 +91,6 @@ import { motion } from "motion-v";
 </template>
 
 <style scoped>
-/* :global(#we) {
-  background: url("/images/city.png") no-repeat 50% calc(50% + 150px);
-}
-
-@media screen and (min-width: 768px) {
-  :global(#we) {
-    background: none;
-  }
-} */
-
 .gradient-blue {
   --size: max(700px, 100svw);
 
@@ -120,17 +110,14 @@ import { motion } from "motion-v";
   transform: translateX(var(--initX)) translateY(var(--initY)) scale(1);
   background: radial-gradient(
     50% 50% at 50% 50%,
-    rgb(17, 96, 251) 0%,
-    rgba(255, 0, 229, 0) 100%
+    var(--color-gradient-blue),
+    transparent
   );
+
   animation: gradient-blue-animation 10s ease-in-out infinite alternate;
 }
 
 @media screen and (min-width: 768px) {
-  :global(#we) {
-    background: none;
-  }
-
   .gradient-blue {
     --size: min(200svh, calc((100svh + 100svw) / 1.3));
 

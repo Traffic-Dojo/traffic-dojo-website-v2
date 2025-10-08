@@ -38,11 +38,11 @@ const variants: Record<string, VariantType> = {
       while-in-view="forward"
     >
       <motion.div
-        class="flex flex-col items-center gap-6 lg:items-end lg:gap-11 lg:justify-self-end"
+        class="flex flex-col items-center gap-6 lg:items-start lg:gap-11 lg:justify-self-end"
         :variants="variants"
       >
         <img src="/images/logo.png" alt="Traffic Dojo Logo" />
-        <span class="text-textGray text-[8px] tracking-wide sm:text-xs"
+        <span class="text-gray text-[8px] tracking-wide sm:text-xs"
           >Dōjō (道場, Japanese) - The term literally means "place of the
           Way".</span
         >
@@ -59,7 +59,7 @@ const variants: Record<string, VariantType> = {
         <span ref="taglineRef" class="flex gap-2"
           >From
           <span
-            class="text-textDark rounded-full bg-gradient-to-br from-white from-65% to-[#c9c9c9] to-100% px-4 py-2 leading-[80%]"
+            class="to-gray rounded-full bg-gradient-to-br from-white from-65% to-100% px-4 py-2 leading-[80%] text-black"
             >Clicks</span
           >to<span
             class="bg-accent drop-shadow-accent 0 rounded-full px-4 py-2 leading-[80%] drop-shadow-lg/40"

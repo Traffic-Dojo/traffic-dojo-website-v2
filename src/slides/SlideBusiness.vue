@@ -32,7 +32,7 @@ const slides = [
 <template>
   <SwiperFixedSlider :slides="slides.length">
     <template #default="{ activeSlideIndex, slideToIndex }">
-      <AppSection>
+      <AppSection class-name="flex items-center justify-center">
         <template #gradients>
           <motion.div
             :initial="{ opacity: 0 }"
@@ -123,7 +123,7 @@ const slides = [
               <button
                 v-for="(_, i) in slides"
                 :key="i"
-                class="bg-textLight pointer-events-auto aspect-square h-4 cursor-pointer rounded-full !p-0 transition-opacity duration-500"
+                class="pointer-events-auto aspect-square h-4 cursor-pointer rounded-full bg-white !p-0 transition-opacity duration-500"
                 :class="{
                   'opacity-20': i !== activeSlideIndex,
                 }"
@@ -158,8 +158,8 @@ const slides = [
 
   background: radial-gradient(
     100% 50% at 80% 25%,
-    rgba(17, 96, 251, 1) 0%,
-    rgba(24, 24, 24, 0) 100%
+    var(--color-gradient-blue),
+    transparent
   );
 }
 

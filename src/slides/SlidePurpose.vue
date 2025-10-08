@@ -155,9 +155,15 @@ const contentVariants: Record<string, VariantType> = {
         autoplay
         muted
         :controls="false"
-        class="aspect-[1/2] max-h-[50svh] rotate-[30deg] lg:max-h-[75svh]"
-        :initial="{ opacity: 0, x: -100, y: 300 }"
-        :while-in-view="{ opacity: 1, x: 0, y: 0, transition: { duration: 2 } }"
+        class="aspect-[1/2] max-h-[50svh] lg:max-h-[75svh]"
+        :initial="{ opacity: 0, x: -100, y: 300, rotate: '30deg' }"
+        :while-in-view="{
+          opacity: 1,
+          x: 0,
+          y: 0,
+          rotate: '30deg',
+          transition: { duration: 2 },
+        }"
       >
         <source src="/video/rocket.mov" type="video/quicktime" />
         <source src="/video/rocket.webm" type="video/webm" />
@@ -168,7 +174,7 @@ const contentVariants: Record<string, VariantType> = {
 
 <style scoped>
 .spark {
-  z-index: 999999999;
+  z-index: 999;
   transform: translateY(12vh) translateX(40%);
   background: url("/images/spark.png") no-repeat center bottom / contain;
   mix-blend-mode: lighten;
@@ -177,7 +183,6 @@ const contentVariants: Record<string, VariantType> = {
 .earth {
   mix-blend-mode: screen;
   background: url("/images/earth.png") no-repeat 50% 100% / contain;
-  /* background: url("/images/earth.png") no-repeat 50% 105% / contain; */
 }
 
 .colors {
@@ -194,8 +199,8 @@ const contentVariants: Record<string, VariantType> = {
 
   background: radial-gradient(
     47% 47% at 50% 50%,
-    rgb(17, 96, 251, 0.9) 0%,
-    rgba(255, 0, 229, 0) 100%
+    var(--color-gradient-blue),
+    transparent
   );
 }
 
@@ -203,7 +208,7 @@ const contentVariants: Record<string, VariantType> = {
   width: clamp(80px, 2.0916rem + 8.1425vw, 126px);
 }
 
-/* @media screen and (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
   .spark {
     display: none;
   }
@@ -225,14 +230,14 @@ const contentVariants: Record<string, VariantType> = {
     background:
       radial-gradient(
         50% 50% at 65% 50%,
-        rgba(236, 204, 255, 0.5) 0%,
-        rgba(24, 24, 24, 0) 100%
+        rgba(236, 204, 255, 0.3) 0%,
+        transparent
       ),
       radial-gradient(
         100% 50% at 80% 50%,
-        rgba(17, 96, 251, 1) 0%,
-        rgba(24, 24, 24, 1) 100%
+        var(--color-gradient-blue),
+        transparent
       );
   }
-} */
+}
 </style>

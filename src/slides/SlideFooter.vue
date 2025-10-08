@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useAnimate, motion, stagger } from "motion-v";
+
 import AppBadges from "../components/AppBadges.vue";
 import AppContacts from "../components/AppContacts.vue";
 import AppSection from "../components/AppSection.vue";
@@ -53,7 +54,7 @@ const listVariants = {
         />
 
         <span
-          class="text-textGray justify-self-start text-xs font-extralight sm:text-sm md:text-3xl"
+          class="text-gray justify-self-start text-xs font-extralight sm:text-sm md:text-3xl"
           >From Clicks to Profit Pathway</span
         >
       </motion.div>
@@ -92,24 +93,9 @@ const listVariants = {
   height: var(--size);
 
   background: radial-gradient(
-    50% 50% at 50% 50%,
-    #1160fb 0%,
-    rgba(24, 24, 24, 0) 100%
+    50% 50% at 50% 60%,
+    var(--color-gradient-blue) 0%,
+    transparent
   );
 }
-
-/* .gradient-blue {
-  --size: min(200svh, calc(100svh + 100svh) / 0.3);
-  position: absolute;
-  width: var(--size);
-  height: calc(var(--size) * 2);
-  top: 0%;
-  left: 50%;
-  transform: scale(1);
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    #1160fb 0%,
-    rgba(24, 24, 24, 0) 100%
-  );
-} */
 </style>

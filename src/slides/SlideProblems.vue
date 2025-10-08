@@ -147,16 +147,16 @@ const problemVariants = (index: number): Record<string, VariantType> => {
 .gradient-problem {
   background: radial-gradient(
     60% 50% at 120% 50%,
-    #ec0000 0%,
-    rgba(236, 0, 0, 0) 100%
+    var(--color-danger),
+    transparent
   );
 }
 
 .gradient-solve {
   background: radial-gradient(
     60% 50% at 120% 50%,
-    #1160fb 0%,
-    rgba(236, 0, 0, 0) 100%
+    var(--color-gradient-blue),
+    transparent
   );
 }
 </style>

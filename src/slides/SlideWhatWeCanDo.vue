@@ -81,7 +81,7 @@ const descriptionVariants: Record<string, VariantType> = {
       >
         <template #gradients>
           <motion.div
-            class="gradient-blue absolute"
+            class="gradient-blue"
             :variants="gradientVariants"
             initial="hidden"
             while-in-view="visible"
@@ -125,7 +125,7 @@ const descriptionVariants: Record<string, VariantType> = {
                   @click="slideToIndex(i)"
                   class="field pointer-events-auto relative cursor-pointer rounded-full px-3 py-2 text-sm transition-all duration-500 ease-in-out md:px-5 md:py-[14px] lg:px-7 lg:text-lg"
                   :class="{
-                    'text-textDark bg-white shadow-[0px_0px_30px_5px_rgba(255,255,255,0.3)]':
+                    'bg-white text-black shadow-[0px_0px_30px_5px_rgba(255,255,255,0.3)]':
                       activeSlideIndex === i,
                     'shadow-none':
                       activeSlideIndex > 0 && activeSlideIndex !== i,
@@ -164,6 +164,8 @@ const descriptionVariants: Record<string, VariantType> = {
 
   width: var(--size);
   height: var(--size);
+
+  position: absolute;
 
   background: radial-gradient(
     50% 50% at 50% 50%,
