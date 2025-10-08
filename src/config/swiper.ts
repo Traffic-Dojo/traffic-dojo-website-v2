@@ -11,10 +11,10 @@ export function createSwiperConfig(props: SwiperProps = {}) {
     class: "h-screen",
     modules: modules,
     mousewheel: {
-      thresholdDelta: 15,
+      thresholdDelta: 12,
       enabled: true,
     },
-    speed: "800",
+    speed: 800,
     ...props,
   } as SwiperProps;
 }

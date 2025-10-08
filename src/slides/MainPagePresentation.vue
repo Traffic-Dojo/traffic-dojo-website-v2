@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import "swiper/css";
+import "swiper/css/pagination";
+
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { createSwiperConfig } from "../config/swiper";
 
@@ -8,9 +11,7 @@ import SlidePurpose from "../slides/SlidePurpose.vue";
 import SlideProblems from "../slides/SlideProblems.vue";
 import SlideProposalTime from "../slides/SlideProposalTime.vue";
 import SlideWhatWeCanDo from "../slides/SlideWhatWeCanDo.vue";
-
-import "swiper/css";
-import "swiper/css/pagination";
+import SlideBusiness from "./SlideBusiness.vue";
 
 const swiperConfig = createSwiperConfig();
 </script>
@@ -35,6 +36,10 @@ const swiperConfig = createSwiperConfig();
 
     <SwiperSlide>
       <SlideProposalTime />
+    </SwiperSlide>
+
+    <SwiperSlide>
+      <SlideBusiness />
     </SwiperSlide>
 
     <SwiperSlide>

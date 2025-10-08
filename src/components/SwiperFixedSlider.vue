@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import "swiper/css";
-
 import { ref } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import type { Swiper as SwiperType } from "swiper";
@@ -45,10 +43,11 @@ function slideToIndex(index: number) {
     v-bind="swiperConfig"
     @swiper="onSwiper"
     @slide-change="onHiddenSwiperChange"
+    :nested="true"
   >
     <SwiperSlide
       class="opacity-0"
-      v-for="slide in 5"
+      v-for="slide in slides"
       :key="slide"
     ></SwiperSlide>
   </Swiper>
