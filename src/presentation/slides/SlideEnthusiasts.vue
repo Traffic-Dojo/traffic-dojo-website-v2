@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import AppSection from "../components/AppSection.vue";
+import AppSection from "./../../components/AppSection.vue";
 import { motion } from "motion-v";
 </script>
 

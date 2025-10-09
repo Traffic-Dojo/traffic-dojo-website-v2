@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { motion, stagger, type VariantType } from "motion-v";
-import AppSection from "../components/AppSection.vue";
-import SwiperFixedSlider from "../components/SwiperFixedSlider.vue";
+import AppSection from "../../components/AppSection.vue";
+import SwiperFixedSlider from "../../components/SwiperFixedSlider.vue";
 
 interface ContentItem {
   emote: string;

@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { useAnimate, motion, stagger } from "motion-v";
 
-import AppBadges from "../components/AppBadges.vue";
-import AppContacts from "../components/AppContacts.vue";
-import AppSection from "../components/AppSection.vue";
-import AppSubscription from "../components/AppSubscription.vue";
-import AppSocials from "../components/icons/AppSocials.vue";
+import AppBadges from "../../components/AppBadges.vue";
+import AppContacts from "../../components/AppContacts.vue";
+import AppSection from "../../components/AppSection.vue";
+import AppSubscription from "../../components/AppSubscription.vue";
+import AppSocials from "../../components/AppSocials.vue";
 
 const [scope, animate] = useAnimate();
 

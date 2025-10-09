@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppSection from "../components/AppSection.vue";
+import AppSection from "../../components/AppSection.vue";
 import { motion, type VariantType } from "motion-v";
 
 const gradientVariants: Record<string, VariantType> = {

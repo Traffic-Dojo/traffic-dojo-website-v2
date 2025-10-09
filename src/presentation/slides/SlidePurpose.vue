@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppSection from "../components/AppSection.vue";
+import AppSection from "../../components/AppSection.vue";
 import { motion, stagger, type VariantType } from "motion-v";
 
 const contentVariants: Record<string, VariantType> = {

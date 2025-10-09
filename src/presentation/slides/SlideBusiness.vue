@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import AppSection from "../components/AppSection.vue";
-import SwiperFixedSlider from "../components/SwiperFixedSlider.vue";
+import AppSection from "./../../components/AppSection.vue";
+import SwiperFixedSlider from "./../../components/SwiperFixedSlider.vue";
 import { motion } from "motion-v";
 
 const slides = [
