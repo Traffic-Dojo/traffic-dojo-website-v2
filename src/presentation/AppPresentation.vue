@@ -17,6 +17,7 @@ import SlideBusiness from "./slides/SlideBusiness.vue";
 import SlideFooter from "./slides/SlideFooter.vue";
 
 import ProposalModal from "../proposal/ProposalModal.vue";
+import { MotionConfig } from "motion-v";
 
 const proposalModalOpen = ref(false);
 
@@ -24,39 +25,41 @@ const swiperConfig = createSwiperConfig();
 </script>
 
 <template>
-  <Swiper v-bind="swiperConfig">
-    <SwiperSlide>
-      <SlideIntroduction />
-    </SwiperSlide>
+  <MotionConfig :in-view-options="{ once: true }">
+    <Swiper v-bind="swiperConfig">
+      <SwiperSlide>
+        <SlideIntroduction />
+      </SwiperSlide>
 
-    <SwiperSlide>
-      <SlideEnthusiasts />
-    </SwiperSlide>
+      <SwiperSlide>
+        <SlideEnthusiasts />
+      </SwiperSlide>
 
-    <SwiperSlide>
-      <SlidePurpose />
-    </SwiperSlide>
+      <SwiperSlide>
+        <SlidePurpose />
+      </SwiperSlide>
 
-    <SwiperSlide>
-      <SlideBusiness />
-    </SwiperSlide>
+      <SwiperSlide>
+        <SlideBusiness />
+      </SwiperSlide>
 
-    <SwiperSlide>
-      <SlideProblems />
-    </SwiperSlide>
+      <SwiperSlide>
+        <SlideProblems />
+      </SwiperSlide>
 
-    <SwiperSlide>
-      <SlideWhatWeCanDo />
-    </SwiperSlide>
+      <SwiperSlide>
+        <SlideWhatWeCanDo />
+      </SwiperSlide>
 
-    <SwiperSlide>
-      <SlideProposalTime />
-    </SwiperSlide>
+      <SwiperSlide>
+        <SlideProposalTime />
+      </SwiperSlide>
 
-    <SwiperSlide>
-      <SlideFooter />
-    </SwiperSlide>
-  </Swiper>
+      <SwiperSlide>
+        <SlideFooter />
+      </SwiperSlide>
+    </Swiper>
+  </MotionConfig>
 
   <ProposalModal :open="proposalModalOpen" />
 </template>
