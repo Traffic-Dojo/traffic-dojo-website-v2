@@ -28,7 +28,7 @@ const consult_link =
           <a
             target="_blank"
             :href="consult_link"
-            class="bg-textLight text-textDark rounded-full px-6 py-2 text-sm leading-none whitespace-nowrap"
+            class="rounded-full bg-white px-6 py-2 text-sm leading-none whitespace-nowrap text-black"
           >
             Schedule a Call
           </a>

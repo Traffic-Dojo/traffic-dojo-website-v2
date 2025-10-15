@@ -156,8 +156,10 @@ const slides = [
   width: var(--size);
   height: var(--size);
 
+  transform: translateY(-25%);
+
   background: radial-gradient(
-    100% 50% at 80% 25%,
+    100% 50% at 80% 50%,
     var(--color-gradient-blue),
     transparent
   );
