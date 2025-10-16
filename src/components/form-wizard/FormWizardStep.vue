@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useFormContext } from "vee-validate";
 import { computed, inject, type Ref } from "vue";
+import { motion, stagger, type VariantType } from "motion-v";
 
 const currentIdx = inject<Ref<number, number>>("STEP_COUNTER")!.value++;
 const formStepIdx = inject<Ref<number, number>>("CURRENT_STEP_INDEX")!;
@@ -12,19 +13,40 @@ const shouldShow = computed(() => {
 const { meta } = useFormContext();
 
 const disabled = computed(() => !meta.value.valid || !meta.value.dirty);
+
+const variants: Record<string, VariantType> = {
+  hidden: { opacity: 0, y: -14 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, delayChildren: stagger(0.3) },
+  },
+};
 </script>
 
 <template>
-  <div v-if="shouldShow" class="flex flex-col gap-8">
-    <div
+  <motion.div
+    initial="hidden"
+    animate="visible"
+    :variants="variants"
+    class="flex flex-col gap-8"
+    v-if="shouldShow"
+  >
+    <motion.div
+      :variants="variants"
       class="text-black-modal text-2xl font-semibold sm:text-3xl md:text-4xl"
     >
       <slot name="title" />
-    </div>
+    </motion.div>
 
-    <slot />
+    <motion.div :variants="variants">
+      <slot />
+    </motion.div>
 
-    <div class="flex items-center justify-end gap-4">
+    <motion.div
+      :variants="variants"
+      class="flex items-center justify-end gap-4"
+    >
       <button
         type="submit"
         :disabled
@@ -53,6 +75,6 @@ const disabled = computed(() => !meta.value.valid || !meta.value.dirty);
           />
         </svg>
       </button>
-    </div>
-  </div>
+    </motion.div>
+  </motion.div>
 </template>
