@@ -1,13 +1,17 @@
 <script lang="ts" setup>
 import AppMenu from "./AppMenu.vue";
 import AppSocials from "./AppSocials.vue";
+import { motion } from "motion-v";
 
 const consult_link =
   "https://calendly.com/d/ckmp-37t-5g8/traffic-dojo-free-consultation";
 </script>
 
 <template>
-  <header
+  <motion.header
+    :initial="{ opacity: 0 }"
+    :animate="{ opacity: 1 }"
+    :transition="{ duration: 3 }"
     class="paddings fixed top-0 left-1/2 z-50 flex h-[90px] w-full max-w-7xl -translate-x-1/2 items-center justify-between px-8"
   >
     <AppMenu />
@@ -35,5 +39,5 @@ const consult_link =
         </li>
       </ul>
     </nav>
-  </header>
+  </motion.header>
 </template>

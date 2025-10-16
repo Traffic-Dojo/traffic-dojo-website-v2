@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import AppModal from "../components/AppModal.vue";
 import FormWizard from "../components/form-wizard/FormWizard.vue";
 
 import {
@@ -16,7 +15,7 @@ import StepMarketingNeeds from "./stepper/steps/StepMarketingNeeds.vue";
 import StepMarketingBudget from "./stepper/steps/StepMarketingBudget.vue";
 import StepBusinessInformation from "./stepper/steps/StepBusinessInformation.vue";
 
-const open = defineModel({ type: Boolean });
+import AppModal from "../components/AppModal.vue";
 
 const validationSchema = [
   CurrentSituationSchema,
@@ -32,13 +31,27 @@ function onSubmit(data: unknown) {
 </script>
 
 <template>
-  <AppModal :open="open">
-    <FormWizard :validation-schema="validationSchema" @submit="onSubmit">
-      <StepCurrentSituation />
-      <StepTargetMarket />
-      <StepMarketingNeeds />
-      <StepMarketingBudget />
-      <StepBusinessInformation />
-    </FormWizard>
+  <AppModal
+    :title="{ hidden: true, label: 'Proposal form' }"
+    :description="{
+      hidden: true,
+      label: 'Asking user business information',
+    }"
+    :with-close="true"
+    variant="center"
+  >
+    <template #trigger>
+      <slot />
+    </template>
+
+    <template #content>
+      <FormWizard :validation-schema="validationSchema" @submit="onSubmit">
+        <StepCurrentSituation />
+        <StepTargetMarket />
+        <StepMarketingNeeds />
+        <StepMarketingBudget />
+        <StepBusinessInformation />
+      </FormWizard>
+    </template>
   </AppModal>
 </template>

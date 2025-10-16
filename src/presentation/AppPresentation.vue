@@ -2,8 +2,6 @@
 import "swiper/css";
 import "swiper/css/pagination";
 
-import { ref } from "vue";
-
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { createSwiperConfig } from "../config/swiper";
 
@@ -16,10 +14,7 @@ import SlideWhatWeCanDo from "./slides/SlideWhatWeCanDo.vue";
 import SlideBusiness from "./slides/SlideBusiness.vue";
 import SlideFooter from "./slides/SlideFooter.vue";
 
-import ProposalModal from "../proposal/ProposalModal.vue";
 import { MotionConfig } from "motion-v";
-
-const proposalModalOpen = ref(false);
 
 const swiperConfig = createSwiperConfig();
 </script>
@@ -60,6 +55,4 @@ const swiperConfig = createSwiperConfig();
       </SwiperSlide>
     </Swiper>
   </MotionConfig>
-
-  <ProposalModal :open="proposalModalOpen" />
 </template>

@@ -2,6 +2,11 @@
 import AppSlide from "../../components/AppSection.vue";
 import CTAButton from "../../components/CTAButton.vue";
 import { motion, stagger, type VariantType } from "motion-v";
+import ProposalModal from "../../proposal/ProposalModal.vue";
+
+defineEmits({
+  ctaClick: null,
+});
 
 const variants: Record<string, VariantType> = {
   initial: {
@@ -69,7 +74,9 @@ const variants: Record<string, VariantType> = {
         >
       </motion.div>
 
-      <CTAButton :variants="variants" />
+      <ProposalModal>
+        <CTAButton :variants="variants" />
+      </ProposalModal>
     </motion.div>
   </AppSlide>
 </template>
