@@ -1,0 +1,134 @@
+@font-face {
+  font-family: "Guaruja Neue";
+  src: url("~assets/css/fonts/GuarujaNeue-Regular.eot");
+  src:
+    local("Guaruja Neue Regular"),
+    local("GuarujaNeue-Regular"),
+    url("/fonts/GuarujaNeue-Regular.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/GuarujaNeue-Regular.woff2") format("woff2"),
+    url("/fonts/GuarujaNeue-Regular.woff") format("woff"),
+    url("/fonts/GuarujaNeue-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Guaruja Neue";
+  src: url("/fonts/GuarujaNeue-Italic.eot");
+  src:
+    local("Guaruja Neue Italic"),
+    local("GuarujaNeue-Italic"),
+    url("/fonts/GuarujaNeue-Italic.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/GuarujaNeue-Italic.woff2") format("woff2"),
+    url("/fonts/GuarujaNeue-Italic.woff") format("woff"),
+    url("/fonts/GuarujaNeue-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Guaruja Neue";
+  src: url("/fonts/GuarujaNeue-ExtraLight.eot");
+  src:
+    local("Guaruja Neue ExtraLight"),
+    local("GuarujaNeue-ExtraLight"),
+    url("/fonts/GuarujaNeue-ExtraLight.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/GuarujaNeue-ExtraLight.woff2") format("woff2"),
+    url("/fonts/GuarujaNeue-ExtraLight.woff") format("woff"),
+    url("/fonts/GuarujaNeue-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Guaruja Neue";
+  src: url("/fonts/GuarujaNeue-Black.eot");
+  src:
+    local("Guaruja Neue Black"),
+    local("GuarujaNeue-Black"),
+    url("/fonts/GuarujaNeue-Black.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/GuarujaNeue-Black.woff2") format("woff2"),
+    url("/fonts/GuarujaNeue-Black.woff") format("woff"),
+    url("/fonts/GuarujaNeue-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Guaruja Neue";
+  src: url("/fonts/GuarujaNeue-Light.eot");
+  src:
+    local("Guaruja Neue Light"),
+    local("GuarujaNeue-Light"),
+    url("/fonts/GuarujaNeue-Light.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/GuarujaNeue-Light.woff2") format("woff2"),
+    url("/fonts/GuarujaNeue-Light.woff") format("woff"),
+    url("/fonts/GuarujaNeue-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Guaruja Neue";
+  src: url("/fonts/GuarujaNeue-Thin.eot");
+  src:
+    local("Guaruja Neue Thin"),
+    local("GuarujaNeue-Thin"),
+    url("/fonts/GuarujaNeue-Thin.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/GuarujaNeue-Thin.woff2") format("woff2"),
+    url("/fonts/GuarujaNeue-Thin.woff") format("woff"),
+    url("/fonts/GuarujaNeue-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Guaruja Neue";
+  src: url("/fonts/GuarujaNeue-Medium.eot");
+  src:
+    local("Guaruja Neue Medium"),
+    local("GuarujaNeue-Medium"),
+    url("/fonts/GuarujaNeue-Medium.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/GuarujaNeue-Medium.woff2") format("woff2"),
+    url("/fonts/GuarujaNeue-Medium.woff") format("woff"),
+    url("/fonts/GuarujaNeue-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Guaruja Neue";
+  src: url("/fonts/GuarujaNeue-Bold.eot");
+  src:
+    local("Guaruja Neue Bold"),
+    local("GuarujaNeue-Bold"),
+    url("/fonts/GuarujaNeue-Bold.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/GuarujaNeue-Bold.woff2") format("woff2"),
+    url("/fonts/GuarujaNeue-Bold.woff") format("woff"),
+    url("/fonts/GuarujaNeue-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Guaruja Neue";
+  src: url("/fonts/GuarujaNeue-SemiBold.eot");
+  src:
+    local("Guaruja Neue SemiBold"),
+    local("GuarujaNeue-SemiBold"),
+    url("/fonts/GuarujaNeue-SemiBold.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/GuarujaNeue-SemiBold.woff2") format("woff2"),
+    url("/fonts/GuarujaNeue-SemiBold.woff") format("woff"),
+    url("/fonts/GuarujaNeue-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
