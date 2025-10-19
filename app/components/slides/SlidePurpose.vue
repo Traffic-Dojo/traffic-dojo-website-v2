@@ -80,13 +80,16 @@ const contentVariants: Record<string, VariantType> = {
             delay: 1.6,
           },
         }"
-        class="star left-[3%] top-[15%] -rotate-[20deg]"
+        class="star top-[15%] left-[3%] -rotate-[20deg]"
       >
-        <img src="~assets/images/star1.png" alt="Google Analytics star" />
+        <img
+          src="~/assets/images/stars/star-ads.png"
+          alt="Google Analytics star"
+        />
       </motion.div>
 
       <motion.div
-        class="star right-0 top-0 z-10 -rotate-3"
+        class="star top-0 right-0 z-10 -rotate-3"
         :initial="{ opacity: 0, transition: { duration: 1 } }"
         :while-in-view="{
           opacity: 1,
@@ -98,7 +101,7 @@ const contentVariants: Record<string, VariantType> = {
           },
         }"
       >
-        <img src="~assets/images/star3.png" alt="Click star" />
+        <img src="~/assets/images/stars/star-click.png" alt="Click star" />
       </motion.div>
 
       <motion.div
@@ -114,11 +117,11 @@ const contentVariants: Record<string, VariantType> = {
           },
         }"
       >
-        <img src="~assets/images/star4.png" alt="Facebook star" />
+        <img src="~/assets/images/stars/star-dollar.png" alt="Facebook star" />
       </motion.div>
 
       <motion.div
-        class="star bottom-[10%] right-[15%] -rotate-12 scale-150"
+        class="star right-[15%] bottom-[10%] scale-150 -rotate-12"
         :initial="{ opacity: 0, transition: { duration: 1.8 } }"
         :while-in-view="{
           opacity: 1,
@@ -130,11 +133,14 @@ const contentVariants: Record<string, VariantType> = {
           },
         }"
       >
-        <img src="~assets/images/star5.png" alt="Google Ads star" />
+        <img
+          src="~/assets/images/stars/star-facebook.png"
+          alt="Google Ads star"
+        />
       </motion.div>
 
       <motion.div
-        class="star bottom-[40%] right-0 -rotate-12 scale-90"
+        class="star right-0 bottom-[40%] scale-90 -rotate-12"
         :initial="{ opacity: 0, transition: { duration: 1.8 } }"
         :while-in-view="{
           opacity: 1,
@@ -146,7 +152,10 @@ const contentVariants: Record<string, VariantType> = {
           },
         }"
       >
-        <img src="~assets/images/star2.png" alt="Dollar sign star" />
+        <img
+          src="~/assets/images/stars/star-google-ads.png"
+          alt="Dollar sign star"
+        />
       </motion.div>
 
       <motion.video
@@ -165,8 +174,7 @@ const contentVariants: Record<string, VariantType> = {
           transition: { duration: 2 },
         }"
       >
-        <source src="~assets/video/rocket.mov" type="video/quicktime" />
-        <source src="~assets/video/rocket.webm" type="video/webm" />
+        <source src="~/assets/video/rocket.webm" type="video/webm" />
       </motion.video>
     </div>
   </AppSection>
@@ -176,13 +184,14 @@ const contentVariants: Record<string, VariantType> = {
 .spark {
   z-index: 999;
   transform: translateY(12vh) translateX(40%);
-  background: url("~assets/images/spark.png") no-repeat center bottom / contain;
+  background: url("~/assets/images/horizon-light.png") no-repeat center bottom /
+    contain;
   mix-blend-mode: lighten;
 }
 
 .earth {
   mix-blend-mode: screen;
-  background: url("~assets/images/earth.png") no-repeat 50% 100% / contain;
+  background: url("~/assets/images/earth.png") no-repeat 50% 100% / contain;
 }
 
 .colors {
@@ -214,7 +223,8 @@ const contentVariants: Record<string, VariantType> = {
   }
 
   .earth {
-    background: url("~assets/images/earth_sm.png") no-repeat 50% 30svh / contain;
+    background: url("~/assets/images/earth_sm.png") no-repeat 50% 30svh /
+      contain;
   }
 
   .colors {

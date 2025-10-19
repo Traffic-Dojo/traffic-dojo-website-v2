@@ -3,6 +3,11 @@ import { motion, stagger, type VariantType } from "motion-v";
 import AppSection from "../../components/AppSection.vue";
 import SwiperFixedSlider from "../../components/SwiperFixedSlider.vue";
 
+import programmerEmoji from "./../../assets/images/emojis/programmer.png";
+import phoneEmoji from "./../../assets/images/emojis/phone.png";
+import sparkEmoji from "./../../assets/images/emojis/spark.png";
+import crystalEmoji from "./../../assets/images/emojis/ball.png";
+
 interface ContentItem {
   emote: string;
   emoteLabel: string;
@@ -19,28 +24,28 @@ const content: ContentItem[] = [
       "At Traffic Dojo We believe that success in the digital realm requires a strategic approach tailored to the unique needs of each business. Whether you're looking for a complete overhaul of your online presence or need assistance with a specific aspect of your marketing strategy, we've got you covered. Let's explore how we can help you achieve your goals in the digital landscape.",
   },
   {
-    emote: "~assets/images/emojis/programmer.png",
+    emote: programmerEmoji,
     emoteLabel: "Programmer emoji",
     label: "Web-design & Development",
     description:
       "Crafting an effective website is more than just a technical task; it's about creating a digital ambassador for your brand. At Traffic Dojo, we understand that your website is often the first interaction potential customers have with your business. That's why our approach to web design and development goes beyond aesthetics and functionality. We meticulously craft each site to not only impress visitors but also drive engagement, generate leads, and ultimately boost your bottom line. With our team by your side, your website isn't just another URL—it's a powerful tool for business growth.",
   },
   {
-    emote: "~assets/images/emojis/phone.png",
+    emote: phoneEmoji,
     emoteLabel: "Phone emoji",
     label: "Paid media",
     description:
       "In today's competitive digital landscape, every dollar spent on paid media matters. That's why our team is dedicated to multiplying your ROI across platforms like Google Ads, Microsoft Ads, and social media channels. We specialize in crafting strategic PPC campaigns that drive tangible results, whether it's generating leads or maximizing conversions. Recognizing that not every business is suited for every platform, we tailor our approach to create the best-performing strategy for your unique needs. Let us optimize your ad spend and supercharge your brand's performance across various online platforms",
   },
   {
-    emote: "~assets/images/emojis/spark.png",
+    emote: sparkEmoji,
     emoteLabel: "Spark emoji",
     label: "Content Marketing",
     description:
       "Content is king in the digital age, and our content marketing services are designed to help you reign supreme. From engaging blog posts and informative articles to captivating videos and eye-catching infographics, we create compelling content that resonates with your audience. Our team of skilled writers, designers, and strategists collaborate to develop content that not only attracts attention but also drives action. Whether you're looking to boost brand awareness, enhance your online presence, or establish thought leadership in your industry, our content marketing solutions can help you achieve your goals",
   },
   {
-    emote: "~assets/images/emojis/ball.png",
+    emote: crystalEmoji,
     emoteLabel: "Crystal ball emoji",
     label: "Visual Branding",
     description:
@@ -139,7 +144,7 @@ const descriptionVariants: Record<string, VariantType> = {
             <div>
               <motion.p
                 :key="activeSlideIndex"
-                class="max-w-[470px] text-sm font-normal leading-relaxed tracking-wide sm:text-base md:max-w-[700px] md:text-lg lg:text-[22px] lg:leading-normal"
+                class="max-w-[470px] text-sm leading-relaxed font-normal tracking-wide sm:text-base md:max-w-[700px] md:text-lg lg:text-[22px] lg:leading-normal"
                 :variants="descriptionVariants"
                 initial="hidden"
                 while-in-view="visible"

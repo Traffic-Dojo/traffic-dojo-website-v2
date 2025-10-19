@@ -1,18 +1,26 @@
 <script lang="ts" setup>
+import { useAppConfig } from "#app";
+
 defineProps<{ size: "small" | "large" }>();
+
+import LinkedInSmall from "./../assets/images/socials/linkedin.svg";
+import LinkedInLarge from "./../assets/images/socials/linkedin_full.svg";
+
+import WhatsAppSmall from "./../assets/images/socials/whatsapp.svg";
+import WhatsAppLarge from "./../assets/images/socials/whatsapp_full.svg";
 
 const socials = [
   {
     name: "WhatsApp",
     href: "https://wa.me/message/3FKKFYNDVLZ7N1",
-    small: "/icons/linkedin.svg",
-    large: "/icons/linkedin_full.svg",
+    small: WhatsAppSmall,
+    large: WhatsAppLarge,
   },
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/company/103803714",
-    small: "/icons/whatsapp.svg",
-    large: "/icons/whatsapp_full.svg",
+    small: LinkedInSmall,
+    large: LinkedInLarge,
   },
 ];
 </script>
@@ -24,7 +32,7 @@ const socials = [
   >
     <li v-for="{ name, href, small, large } in socials" :key="name">
       <a :href="href" target="_blank" class="rounded-sm p-1">
-        <img :src="size === 'small' ? small : large" alt="name" />
+        <img :src="size === 'small' ? small : large" :alt="name" />
       </a>
     </li>
   </ul>

@@ -38,7 +38,7 @@ const slides = [
             :initial="{ opacity: 0 }"
             :while-in-view="{
               opacity: [1, 0.75, 0.5, 0.15][activeSlideIndex],
-              y: ['0%', '5%', '10%', '15%'][activeSlideIndex],
+              y: ['-20%', '-15%', '-10%', '-5%'][activeSlideIndex],
             }"
             :transition="{ duration: 0.6 }"
             class="earth absolute inset-0"
@@ -53,7 +53,7 @@ const slides = [
         </template>
 
         <div
-          class="sticky top-[25%] mx-auto flex w-fit flex-col items-center justify-center gap-12 text-center lg:mx-auto lg:grid lg:grid-cols-[2fr,3fr] lg:gap-12 lg:text-left"
+          class="sticky top-1/4 mx-auto flex w-fit flex-col items-center justify-center gap-12 text-center lg:mx-auto lg:grid lg:grid-cols-[2fr,3fr] lg:gap-12 lg:text-left"
         >
           <motion.h2
             :initial="{ opacity: 0, y: -20 }"
@@ -61,7 +61,7 @@ const slides = [
             :transition="{ duration: 1 }"
             class="text-center text-3xl sm:text-5xl lg:text-left"
           >
-            <span class="font-semibold leading-relaxed">Traffic Dojo</span> is
+            <span class="leading-relaxed font-semibold">Traffic Dojo</span> is
             <br />
             for
             <span
@@ -108,7 +108,7 @@ const slides = [
                     },
                   },
                 }"
-                class="text-base font-light leading-relaxed md:text-xl md:leading-[36px]"
+                class="text-base leading-relaxed font-light md:text-xl md:leading-[36px]"
               >
                 {{ slides[activeSlideIndex]?.description }}
               </motion.p>
@@ -141,7 +141,7 @@ const slides = [
 .earth {
   rotate: -6deg;
   translate: 0 5%;
-  background: url("~assets/images/earth_sm.png") no-repeat 50% 70% / contain;
+  background: url("~/assets/images/earth_sm.png") no-repeat 50% 70% / contain;
   mix-blend-mode: screen;
   z-index: 999;
 }
@@ -168,7 +168,8 @@ const slides = [
 @media screen and (min-width: 1024px) {
   .earth {
     rotate: 0deg;
-    background: url("/images/earth.png") no-repeat center bottom / contain;
+    background: url("~/assets/images/earth.png") no-repeat center bottom /
+      contain;
   }
 }
 </style>

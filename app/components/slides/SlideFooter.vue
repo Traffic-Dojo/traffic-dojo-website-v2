@@ -48,7 +48,7 @@ const listVariants = {
         class="flex flex-col items-center gap-4 md:grid md:grid-cols-2 md:items-center md:gap-12"
       >
         <img
-          src="~assets/images/logo.png"
+          src="~/assets/images/logo.png"
           alt="Traffic Dojo Logo"
           class="w-[40%] min-w-[200px] justify-self-end md:w-full md:max-w-[400px]"
         />

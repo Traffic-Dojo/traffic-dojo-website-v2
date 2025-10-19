@@ -1,9 +1,11 @@
 <script lang="ts" setup>
+import DesignRushBadge from "./../assets/images/verified.png";
+
 const badges = [
   {
     name: "DesignRush",
     href: "https://www.designrush.com/agency/profile/traffic-dojo",
-    src: "/images/verified.png",
+    src: DesignRushBadge,
     alt: "Traffic Dojo is verified on DesignRush",
   },
 ];
