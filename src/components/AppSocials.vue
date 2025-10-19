@@ -15,12 +15,6 @@ const socials = [
     large: "/icons/whatsapp_full.svg",
   },
 ];
-
-/**
- * TODO:
- * - add analytics
- * - socials links move to app config file
- */
 </script>
 
 <template>
@@ -29,7 +23,7 @@ const socials = [
     :class="{ 'hidden sm:flex': size === 'small' }"
   >
     <li v-for="{ name, href, small, large } in socials" :key="name">
-      <a :href="href">
+      <a :href="href" target="_blank" class="rounded-sm p-1">
         <img :src="size === 'small' ? small : large" alt="name" />
       </a>
     </li>

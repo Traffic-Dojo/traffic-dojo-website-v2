@@ -35,7 +35,7 @@ import { motion } from "motion-v";
           }"
           initial="hidden"
           while-in-view="visible"
-          :in-view-options="{ margin: '-300px 0px', once: true }"
+          :in-view-options="{ margin: '-300px 0px' }"
         />
 
         <motion.img

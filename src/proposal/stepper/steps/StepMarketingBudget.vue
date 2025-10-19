@@ -2,7 +2,7 @@
 import { z } from "zod";
 import { MarketingBudgetSchema } from "../schemas";
 import FormStep from "../../../components/form-wizard/FormWizardStep.vue";
-import AppRadio from "../../../components/inputs/AppRadio.vue";
+import AppRadioGroup from "../../../components/inputs/AppRadioGroup.vue";
 
 const budgets: {
   label: string;
@@ -24,14 +24,6 @@ const budgets: {
       Digital Marketing Budget?
     </template>
 
-    <div class="grid grid-flow-col grid-cols-2 grid-rows-4 gap-4 *:w-fit">
-      <AppRadio
-        v-for="{ label, value } in budgets"
-        :key="value"
-        :label="label"
-        :value="value"
-        name="budget"
-      />
-    </div>
+    <AppRadioGroup name="budget" :items="budgets" />
   </FormStep>
 </template>

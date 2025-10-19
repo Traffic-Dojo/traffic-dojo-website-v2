@@ -2,14 +2,8 @@
 @import "./fonts.css";
 
 @theme {
-  /* Fonts */
   --font-sans: "Guaruja Neue", "system-ui", "sans-serif";
 
-  /* ---- */
-  /* Colors */
-  /* ---- */
-
-  /* Common */
   --color-background: rgba(25, 25, 25, 1);
   --color-white: rgba(255, 255, 255, 1);
   --color-black: rgba(32, 32, 32, 1);
@@ -21,23 +15,25 @@
   --color-accent: rgba(255, 168, 0, 1);
   --color-accent-secondary: rgba(171, 252, 199, 1);
 
-  /* Gradients */
   --color-black-modal: rgba(43, 43, 43, 1);
   --color-gray-modal: rgba(237, 237, 237, 1);
 
-  /* Modal */
   --color-gradient-blue: rgba(17, 96, 251, 1);
   --color-gradient-pink: rgba(255, 0, 230, 1);
+}
 
-  /* background: 'rgba(25, 25, 25, 1)',
-				textLight: 'rgba(255, 255, 255, 1)',
-				textDark: 'rgba(32, 32, 32, 1)',
-				textGray: 'rgba(255, 255, 255, 0.5)',
-				accent: 'rgba(255, 168, 0, 1)',
-				modalText: 'rgba(43, 43, 43, 1)',
-				modalAccent: 'rgba(171, 252, 199, 1)',
-				modalGrey: 'rgba(237, 237, 237, 1)',
-				modalSecondaryGrey: 'rgba(105, 105, 105, 1)' */
+@utility focusable {
+  @apply outline-2 outline-black;
+}
+
+@layer base {
+  a {
+    @apply block;
+  }
+
+  *:focus-visible {
+    @apply focusable;
+  }
 }
 
 html {

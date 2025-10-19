@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import FormStep from "../../../components/form-wizard/FormWizardStep.vue";
 import AppInput from "../../../components/inputs/AppInput.vue";
+import AppTelephoneInput from "../../../components/inputs/AppTelephoneInput.vue";
 </script>
 
 <template>
@@ -14,12 +15,6 @@ import AppInput from "../../../components/inputs/AppInput.vue";
       class="grid grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-3 md:gap-x-12 md:gap-y-5"
     >
       <AppInput label="Your Name*" name="name" class-name="md:col-span-2" />
-
-      <!-- <Telephone
-        name="phone"
-        @update:number="handlePhoneNumber"
-        @update:valid="handlePhoneValid"
-      /> -->
 
       <AppInput
         label="Your Email*"
@@ -41,6 +36,8 @@ import AppInput from "../../../components/inputs/AppInput.vue";
         name="comment"
         class-name="col-span-2 md:col-span-3"
       />
+
+      <AppTelephoneInput name="phone" />
     </div>
   </FormStep>
 </template>

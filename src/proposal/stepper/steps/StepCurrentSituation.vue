@@ -2,7 +2,8 @@
 import { type z } from "zod";
 import { CurrentSituationSchema } from "../schemas";
 import FormStep from "../../../components/form-wizard/FormWizardStep.vue";
-import AppRadio from "../../../components/inputs/AppRadio.vue";
+import AppRadioGroup from "../../../components/inputs/AppRadioGroup.vue";
+import AppTelephoneInput from "../../../components/inputs/AppTelephoneInput.vue";
 
 const situations: {
   label: string;
@@ -21,14 +22,8 @@ const situations: {
       Your Current Situation?
     </template>
 
-    <div class="flex flex-col gap-4 *:w-fit">
-      <AppRadio
-        :key="label"
-        v-for="{ label, value } in situations"
-        name="situation"
-        :value
-        :label
-      />
-    </div>
+    <AppTelephoneInput name="phone" />
+
+    <AppRadioGroup name="situation" :items="situations" />
   </FormStep>
 </template>

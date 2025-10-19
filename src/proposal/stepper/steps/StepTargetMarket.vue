@@ -2,7 +2,7 @@
 import type { z } from "zod";
 import { TargetMarketSchema } from "../schemas";
 import FormStep from "../../../components/form-wizard/FormWizardStep.vue";
-import AppRadio from "../../../components/inputs/AppRadio.vue";
+import AppRadioGroup from "../../../components/inputs/AppRadioGroup.vue";
 
 const target_options: {
   label: string;
@@ -22,14 +22,6 @@ const target_options: {
       Target Market?
     </template>
 
-    <div class="flex flex-col gap-4 *:w-fit">
-      <AppRadio
-        v-for="{ label, value } in target_options"
-        :key="value"
-        :label="label"
-        :value="value"
-        name="market"
-      />
-    </div>
+    <AppRadioGroup name="market" :items="target_options" />
   </FormStep>
 </template>

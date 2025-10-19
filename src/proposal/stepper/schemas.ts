@@ -46,7 +46,11 @@ export const BusinessInformationSchema = z.object({
     hostname: z.regexes.domain,
     error: "Invalid website",
   }),
-  phone: z.string("Enter your phone"),
+  phone: z.url({
+    protocol: /^https?$/,
+    hostname: z.regexes.domain,
+    error: "Invalid website",
+  }),
   comment: z.string().optional().default(""),
   metrics: z.record(z.string(), z.string()).optional(),
 });

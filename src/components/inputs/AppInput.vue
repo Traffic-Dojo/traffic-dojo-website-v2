@@ -30,15 +30,16 @@ const { value, errorMessage, handleChange, handleBlur, meta } = useField(name);
     </label>
 
     <div
-      class="border-gray-modal flex items-center overflow-hidden rounded-full border"
+      class="has-focus:focusable flex items-center overflow-hidden rounded-full outline outline-black"
       :class="{ 'text-danger': errorMessage && meta.valid }"
     >
       <span
         v-if="inputAddon"
-        class="text-gray-secondary bg-gray-100 px-4 py-2 text-sm font-normal"
+        class="text-gray-secondary bg-gray-100 py-2 pr-2 pl-4 text-sm font-normal"
       >
         {{ inputAddon }}
       </span>
+
       <input
         :id="name"
         :name="name"
@@ -46,7 +47,8 @@ const { value, errorMessage, handleChange, handleBlur, meta } = useField(name);
         :value
         @input="handleChange"
         @blur="handleBlur"
-        class="flex-1 bg-transparent px-4 py-2 text-sm font-normal tracking-wide focus:outline-none"
+        class="flex-1 bg-transparent px-4 py-2 text-sm font-normal tracking-wide focus-visible:outline-none"
+        :class="{ 'pr-4 pl-2': inputAddon }"
       />
     </div>
 
