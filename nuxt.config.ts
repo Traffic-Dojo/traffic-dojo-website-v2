@@ -4,8 +4,10 @@ import tailwindcss from "@tailwindcss/vite";
 // - add SSG to index page
 
 export default defineNuxtConfig({
-  compatibilityDate: "2025-07-15",
-  devtools: { enabled: true },
+  routeRules: {
+    "/": { prerender: true },
+    "/blog/**": { prerender: false },
+  },
 
   imports: {
     autoImport: false,
@@ -20,4 +22,8 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+
+  compatibilityDate: "2025-07-15",
+
+  devtools: { enabled: true },
 });
