@@ -1,13 +1,11 @@
 <script lang="ts" setup>
 import { twMerge } from "tailwind-merge";
 import { motion } from "motion-v";
+import { sections } from "../configs/sections";
 
-defineProps({
-  className: {
-    type: String,
-    required: false,
-  },
-});
+const props = defineProps<{ className?: string; id?: keyof typeof sections }>();
+
+const id = props.id ? sections[props.id].id : undefined;
 </script>
 
 <template>
@@ -25,6 +23,7 @@ defineProps({
     :class="
       twMerge('mx-auto h-full w-full max-w-7xl px-6 py-6 md:px-10', className)
     "
+    :id="id"
   >
     <slot />
   </motion.section>

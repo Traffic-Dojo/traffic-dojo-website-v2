@@ -4,7 +4,7 @@ import { motion } from "motion-v";
 </script>
 
 <template>
-  <AppSection class-name="content-center">
+  <AppSection class-name="content-center" id="we">
     <template #gradients>
       <motion.div class="gradient-blue"></motion.div>
     </template>

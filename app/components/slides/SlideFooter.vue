@@ -27,7 +27,7 @@ const listVariants = {
 </script>
 
 <template>
-  <AppSection class-name="flex items-center justify-center">
+  <AppSection class-name="flex items-center justify-center" id="contacts">
     <template #gradients>
       <motion.div
         :initial="{ opacity: 0, x: '-25%' }"

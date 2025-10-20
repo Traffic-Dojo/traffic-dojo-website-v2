@@ -22,6 +22,7 @@ const contentVariants: Record<string, VariantType> = {
 <template>
   <AppSection
     class-name="flex flex-col justify-center gap-10 lg:grid lg:grid-cols-2 lg:items-center lg:gap-6"
+    id="purpose"
   >
     <template #gradients>
       <motion.div

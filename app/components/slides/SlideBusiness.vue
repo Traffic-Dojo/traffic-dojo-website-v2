@@ -32,7 +32,7 @@ const slides = [
 <template>
   <SwiperFixedSlider :slides="slides.length">
     <template #default="{ activeSlideIndex, slideToIndex }">
-      <AppSection class-name="flex items-center justify-center">
+      <AppSection class-name="flex items-center justify-center" id="businesses">
         <template #gradients>
           <motion.div
             :initial="{ opacity: 0 }"

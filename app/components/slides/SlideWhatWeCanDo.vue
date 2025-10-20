@@ -83,6 +83,7 @@ const descriptionVariants: Record<string, VariantType> = {
     <template #default="{ activeSlideIndex, slideToIndex }">
       <AppSection
         class-name="px-6 relative flex items-center justify-center md:px-20"
+        id="whatcanwedo"
       >
         <template #gradients>
           <motion.div

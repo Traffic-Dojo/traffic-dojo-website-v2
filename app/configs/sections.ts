@@ -12,6 +12,6 @@ export const sections = {
     id: "what-we-can-do",
     href: "/#what-we-can-do",
   },
-  contactus: { label: "Contact Us", id: "contact-us", href: "/#contact-us" },
+  contacts: { label: "Contact Us", id: "contact-us", href: "/#contact-us" },
   blog: { label: "Blog", id: "blog", href: "/blog" },
 };

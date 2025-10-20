@@ -15,11 +15,13 @@ import SlideFooter from "./../components/slides/SlideFooter.vue";
 
 import { MotionConfig } from "motion-v";
 import { useAppConfig } from "#app";
+import AppHeader from "../components/AppHeader.vue";
 
 const { initialSwiperConfig } = useAppConfig();
 </script>
 
 <template>
+  <AppHeader />
   <MotionConfig :in-view-options="{ once: true }">
     <Swiper v-bind="initialSwiperConfig">
       <SwiperSlide>

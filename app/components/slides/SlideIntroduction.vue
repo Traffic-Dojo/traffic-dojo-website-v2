@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppSlide from "../../components/AppSection.vue";
+import AppSection from "../../components/AppSection.vue";
 import CTAButton from "../../components/CTAButton.vue";
 import { motion, stagger, type VariantType } from "motion-v";
 import ProposalModal from "./../proposal/ProposalModal.vue";
@@ -30,7 +30,7 @@ const variants: Record<string, VariantType> = {
 </script>
 
 <template>
-  <AppSlide>
+  <AppSection id="introduction">
     <template #gradients>
       <div class="gradient-blue"></div>
       <div class="gradient-pink"></div>
@@ -64,7 +64,7 @@ const variants: Record<string, VariantType> = {
         <span ref="taglineRef" class="flex gap-2"
           >From
           <span
-            class="to-gray rounded-full bg-gradient-to-br from-white from-65% to-100% px-4 py-2 leading-[80%] text-black"
+            class="to-gray rounded-full bg-linear-to-br from-white from-65% to-100% px-4 py-2 leading-[80%] text-black"
             >Clicks</span
           >to<span
             class="bg-accent drop-shadow-accent 0 rounded-full px-4 py-2 leading-[80%] drop-shadow-lg/40"
@@ -78,7 +78,7 @@ const variants: Record<string, VariantType> = {
         <CTAButton :variants="variants" />
       </ProposalModal>
     </motion.div>
-  </AppSlide>
+  </AppSection>
 </template>
 
 <style scoped>

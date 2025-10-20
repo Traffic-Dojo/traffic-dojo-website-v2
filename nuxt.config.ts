@@ -1,8 +1,5 @@
 import tailwindcss from "@tailwindcss/vite";
 
-// TODO:
-// - add SSG to index page
-
 export default defineNuxtConfig({
   routeRules: {
     "/": { prerender: true },

@@ -1,9 +1,7 @@
 <script lang="ts" setup>
 import { motion, stagger, type VariantType } from "motion-v";
 import AppModal from "./AppModal.vue";
-import { useAppConfig } from "#app";
-
-const { sections } = useAppConfig();
+import { sections } from "../configs/sections";
 
 const listVariants: Record<string, VariantType> = {
   open: {
@@ -37,7 +35,7 @@ const listVariants: Record<string, VariantType> = {
   >
     <template #trigger="{ open }">
       <button
-        class="sm:text-gray sm:border-gray relative px-2 py-2 sm:rounded-full sm:border sm:!px-10"
+        class="sm:text-gray sm:border-gray cursor-pointer px-2 py-2 transition-all duration-500 hover:border-white hover:text-white sm:rounded-full sm:border sm:px-10"
         :class="{ 'sm:border-white sm:text-white': open }"
       >
         <span class="hidden sm:inline">{{ open ? "Close" : "Menu" }}</span>
@@ -53,16 +51,15 @@ const listVariants: Record<string, VariantType> = {
     </template>
 
     <template #content="{ closeModal }">
-      <nav class="w-fit">
-        <motion.ul class="flex flex-col gap-4" :variants="listVariants">
+      <nav @click="closeModal">
+        <motion.ul class="flex w-fit flex-col gap-4" :variants="listVariants">
           <motion.li
             v-for="{ label, href } in Object.values(sections)"
             :key="href"
             :variants="listVariants"
-            @click="closeModal"
           >
             <a
-              class="relative text-[28px] before:absolute before:-bottom-1 before:h-[1px] before:w-full before:origin-left before:scale-x-0 before:bg-white before:transition-all before:duration-500 hover:before:scale-x-100 md:text-3xl"
+              class="relative w-fit text-[28px] before:absolute before:-bottom-1 before:h-px before:w-full before:origin-left before:scale-x-0 before:bg-white before:transition-all before:duration-500 hover:before:scale-x-100 md:text-3xl"
               :href="href"
               >{{ label }}</a
             >
