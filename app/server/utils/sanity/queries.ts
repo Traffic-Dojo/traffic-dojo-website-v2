@@ -1,4 +1,7 @@
-export const allArticlesQuery = `*[_type == 'title'] | order(date desc){
+import { defineQuery } from "groq";
+
+export const allArticlesQuery =
+  defineQuery(`*[_type == 'title'] | order(date desc){
   _id,
   date,
   title,
@@ -7,14 +10,14 @@ export const allArticlesQuery = `*[_type == 'title'] | order(date desc){
   "preview": preview.asset -> url,
   "mobile": mobile.asset -> url,
   "slug": slug.current,
-}`;
+}`);
 
 export function createArticleQuery(slug: string) {
   if (!slug) {
     throw new Error("Can't create a query without 'slug' property");
   }
 
-  return `*[_type == 'title' && slug.current == '${slug}'] | order(date desc){
+  return defineQuery(`*[_type == 'title' && slug.current == '${slug}'] | order(date desc){
         _id,
         date,
         title,
@@ -25,7 +28,7 @@ export function createArticleQuery(slug: string) {
         "mobile": mobile.asset -> url,
         "full": full.asset -> url,
         "slug": slug.current,
-    }`;
+    }`);
 }
 
 export interface PreviewArticle {

@@ -1,0 +1,170 @@
+<script setup lang="ts">
+import {
+  allArticlesQuery,
+  type PreviewArticle,
+} from "../../server/utils/sanity/queries";
+import { sanityClient } from "../../server/utils/sanity/client";
+import AppSection from "~/components/AppSection.vue";
+import { motion, stagger, type VariantType } from "motion-v";
+
+const currentCategory = ref<string | null>(null);
+
+function onCategoryChange(category: string) {
+  if (currentCategory.value === category) {
+    currentCategory.value = null;
+  } else {
+    currentCategory.value = category;
+  }
+}
+
+const { data: articles } = useAsyncData<PreviewArticle[]>(
+  () => sanityClient.fetch(allArticlesQuery),
+  { default: () => [] },
+);
+
+const categories = computed(() =>
+  articles.value
+    ? Array.from(
+        new Set(articles.value.map((article) => article.category)).values(),
+      )
+    : [],
+);
+
+const filteredPosts = computed(() =>
+  articles.value.filter((article) =>
+    currentCategory.value ? article.category === currentCategory.value : true,
+  ),
+);
+
+// add params.id to links instead of using anchors
+// https://nuxt.com/docs/4.x/api/components/nuxt-link
+
+const containerVariants: Record<string, VariantType> = {
+  hidden: {
+    opacity: 0,
+    y: -10,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+      delayChildren: stagger(0.2),
+    },
+  },
+};
+
+const categoryButtonVariants: Record<string, VariantType> = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+  },
+};
+</script>
+
+<template>
+  <AppSection>
+    <template #gradients>
+      <div class="gradient-blue"></div>
+    </template>
+
+    <motion.div
+      initial="hidden"
+      while-in-view="visible"
+      class="container mx-auto flex flex-col gap-6 p-12"
+    >
+      <motion.h1 class="text-3xl font-medium">Blog</motion.h1>
+
+      <motion.div
+        initial="hidden"
+        while-in-view="visible"
+        :variants="containerVariants"
+        class="flex flex-wrap items-center gap-4"
+      >
+        <motion.button
+          :variants="categoryButtonVariants"
+          v-for="category in categories"
+          :key="category"
+          @click="onCategoryChange(category)"
+          :class="[
+            'hover:text-accent hover:border-accent cursor-pointer rounded-full border px-10 py-2 transition-all duration-500',
+            {
+              'border-accent text-accent': currentCategory === category,
+              'text-gray border-gray': currentCategory !== category,
+            },
+          ]"
+        >
+          {{ category }}
+        </motion.button>
+      </motion.div>
+
+      <motion.div
+        :variants="categoryButtonVariants"
+        class="grid justify-center gap-x-8 gap-y-16 md:grid-cols-2"
+      >
+        <motion.div
+          v-for="{
+            date,
+            category,
+            slug,
+            title,
+            mobile,
+            description,
+            preview,
+          } in filteredPosts"
+          class="flex max-w-xl flex-col gap-4 lg:gap-x-8"
+          :key="title"
+        >
+          <picture>
+            <source :srcset="preview" media="(min-width: 1024px)" />
+            <img
+              class="w-full rounded-xl object-contain lg:aspect-square"
+              :src="mobile"
+              alt="Preview"
+            />
+          </picture>
+
+          <div class="flex flex-col gap-4">
+            <div class="text-gray flex items-center gap-4 font-light">
+              <span>{{ new Date(date).toLocaleDateString() }}</span>
+              <span>{{ category }}</span>
+            </div>
+
+            <NuxtLink
+              :href="`/blog/${slug}`"
+              class="hover:text-accent text-lg font-medium transition-colors duration-500"
+              >{{ title }}
+            </NuxtLink>
+
+            <span class="font-light">{{ description }}</span>
+          </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  </AppSection>
+</template>
+
+<style scoped>
+.gradient-blue {
+  --multiplier: 2;
+  --minsize: 1200px;
+
+  --minmax: clamp(var(--minsize), 100%, max(100vh, 100vw));
+  --size: calc(var(--minmax) * var(--multiplier));
+
+  position: absolute;
+
+  width: var(--size);
+  height: var(--size);
+
+  transform: translateY(-50%);
+
+  background: radial-gradient(
+    90% 50% at 50% 50%,
+    var(--color-gradient-blue) 0%,
+    transparent 100%
+  );
+}
+</style>
