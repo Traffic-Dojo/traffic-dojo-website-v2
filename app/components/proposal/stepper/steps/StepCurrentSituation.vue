@@ -2,7 +2,6 @@
 import { type z } from "zod";
 import { CurrentSituationSchema } from "../schemas";
 import FormWizardStep from "../../../form-wizard/FormWizardStep.vue";
-import AppTelephoneInput from "../../../inputs/AppTelephoneInput.vue";
 import AppRadioGroup from "../../../inputs/AppRadioGroup.vue";
 
 const situations: {
@@ -21,8 +20,6 @@ const situations: {
       Which Best Describes <br />
       Your Current Situation?
     </template>
-
-    <AppTelephoneInput name="phone" />
 
     <AppRadioGroup name="situation" :items="situations" />
   </FormWizardStep>

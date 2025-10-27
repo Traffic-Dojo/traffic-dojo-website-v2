@@ -10,7 +10,7 @@ const shouldShow = computed(() => {
   return currentIdx === formStepIdx.value;
 });
 
-const { meta } = useFormContext();
+const { meta, errorBag, isFieldTouched } = useFormContext();
 
 const disabled = computed(() => !meta.value.valid || !meta.value.dirty);
 
@@ -22,6 +22,28 @@ const variants: Record<string, VariantType> = {
     transition: { duration: 0.8, delayChildren: stagger(0.3) },
   },
 };
+
+/**
+ * in schemas.ts file we have custom telephone input validation and no matter if we have
+ * validationOnMount = false on whole <Form> element on in useField composable,
+ * it still validates the telephone input's '' (empty string) on mount and renders an error
+ *
+ * temporary solutions:
+ * - create our own computer variable that checks if fields were touched
+ * or
+ * - validate form on submit (but that's what we don't want)
+ */
+const errors = computed(() =>
+  Object.entries(errorBag.value).reduce((acc, [fieldName, fieldErrors]) => {
+    console.log(fieldName, fieldErrors);
+
+    if (isFieldTouched(fieldName) && fieldErrors) {
+      acc.push(...fieldErrors);
+    }
+
+    return acc;
+  }, [] as string[]),
+);
 </script>
 
 <template>
@@ -42,6 +64,14 @@ const variants: Record<string, VariantType> = {
     <motion.div :variants="variants">
       <slot />
     </motion.div>
+
+    <div v-if="errors.length" class="text-danger">
+      <ul>
+        <li v-for="error in errors" :key="error">
+          {{ error }}
+        </li>
+      </ul>
+    </div>
 
     <motion.div
       :variants="variants"

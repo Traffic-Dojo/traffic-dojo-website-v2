@@ -1,17 +1,18 @@
 import { z } from "zod";
+import parsePhoneNumber from "libphonenumber-js";
 
 export const CurrentSituationSchema = z.object({
-  situation: z.literal(["new", "working", "looking"]),
+  situation: z.enum(["new", "working", "looking"]),
 });
 
 export const TargetMarketSchema = z.object({
-  market: z.literal(["consumers", "business", "commerce", "other"]),
+  market: z.enum(["consumers", "business", "commerce", "other"]),
 });
 
 export const MarketingNeedsSchema = z.object({
   needs: z
     .array(
-      z.literal([
+      z.enum([
         "website",
         "website+",
         "leads",
@@ -23,11 +24,11 @@ export const MarketingNeedsSchema = z.object({
         "social media partner",
       ]),
     )
-    .nonempty(),
+    .min(1, "Please select at least one option"),
 });
 
 export const MarketingBudgetSchema = z.object({
-  budget: z.literal([
+  budget: z.enum([
     "1000",
     "1000-2000",
     "2000-5000",
@@ -38,23 +39,22 @@ export const MarketingBudgetSchema = z.object({
 });
 
 export const BusinessInformationSchema = z.object({
-  name: z.string().nonempty("Enter your name"),
-  email: z.email("Invalid email"),
-  business: z.string("Enter your business name"),
-  website: z.url({
-    protocol: /^https?$/,
-    hostname: z.regexes.domain,
-    error: "Invalid website",
-  }),
-  phone: z.url({
-    protocol: /^https?$/,
-    hostname: z.regexes.domain,
-    error: "Invalid website",
-  }),
-  comment: z.string().optional().default(""),
-  metrics: z.record(z.string(), z.string()).optional(),
-});
+  name: z.string().min(1, "Enter your name"),
+  email: z.string().email("Invalid email"),
+  business: z.string().min(1, "Enter your business name"),
+  website: z.string().url("Invalid website").optional(),
+  phone: z.string().refine(
+    (value) => {
+      const phoneNumber = parsePhoneNumber(value);
 
-export const SubscriptionFormSchema = z.object({
-  email: z.email("Invalid email"),
+      if (!phoneNumber) {
+        return false;
+      }
+
+      return phoneNumber.isValid();
+    },
+    {
+      message: "Invalid phone number",
+    },
+  ),
 });

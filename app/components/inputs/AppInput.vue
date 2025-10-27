@@ -8,11 +8,11 @@ interface Props {
   type?: string;
   className?: string;
   inputAddon?: string;
+  placeholder?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   type: "text",
-  inputAddon: "",
 });
 
 const { name } = toRefs(props);
@@ -24,18 +24,26 @@ const { value, errorMessage, handleChange, handleBlur, meta } = useField(name);
   <div class="flex flex-col gap-3" :class="className">
     <label
       :for="name"
-      class="text-gray-secondary text-sm font-normal tracking-wide"
+      class="text-sm font-normal tracking-wide"
+      :class="{
+        'text-danger': errorMessage && meta.touched,
+        'text-gray-secondary': !(errorMessage && meta.touched),
+      }"
     >
       {{ label }}
     </label>
 
     <div
       class="has-focus:focusable flex items-center overflow-hidden rounded-full outline outline-black"
-      :class="{ 'text-danger': errorMessage && meta.valid }"
+      :class="{ 'text-danger outline-danger': errorMessage && meta.touched }"
     >
       <span
         v-if="inputAddon"
-        class="text-gray-secondary bg-gray-100 py-2 pr-2 pl-4 text-sm font-normal"
+        class="bg-gray-100 py-2 pr-2 pl-4 text-sm font-normal"
+        :class="{
+          'text-danger': errorMessage && meta.touched,
+          'text-gray-secondary': !(errorMessage && meta.touched),
+        }"
       >
         {{ inputAddon }}
       </span>
@@ -49,11 +57,8 @@ const { value, errorMessage, handleChange, handleBlur, meta } = useField(name);
         @blur="handleBlur"
         class="flex-1 bg-transparent px-4 py-2 text-sm font-normal tracking-wide focus-visible:outline-none"
         :class="{ 'pr-4 pl-2': inputAddon }"
+        :placeholder
       />
     </div>
-
-    <span v-show="errorMessage || meta.valid" class="text-danger text-xs">{{
-      errorMessage
-    }}</span>
   </div>
 </template>

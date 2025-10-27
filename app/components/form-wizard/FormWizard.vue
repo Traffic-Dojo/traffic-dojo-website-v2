@@ -78,11 +78,8 @@ const onInvalidSubmit = ({
     :keep-values="true"
     @submit="onSubmit"
     @invalid-submit="onInvalidSubmit"
-    #default="{ values, errors }"
+    :validate-on-mount="false"
   >
     <slot />
-    Values: {{ values }}
-
-    Errors: {{ errors }}
   </Form>
 </template>

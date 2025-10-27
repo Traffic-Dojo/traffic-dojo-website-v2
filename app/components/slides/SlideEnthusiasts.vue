@@ -75,7 +75,7 @@ import { motion } from "motion-v";
           </h2>
 
           <p
-            class="w-[75%] text-base leading-loose font-light md:text-xl md:leading-[38px] md:font-normal"
+            class="w-3/4 text-base leading-loose font-light md:text-xl md:leading-[38px] md:font-normal"
           >
             With over
             <span

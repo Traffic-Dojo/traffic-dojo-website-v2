@@ -10,7 +10,7 @@ const id = props.id ? sections[props.id].id : undefined;
 
 <template>
   <motion.div
-    class="absolute inset-0 -z-50"
+    class="absolute inset-0 z-0"
     :initial="{ opacity: 0 }"
     :while-in-view="{ opacity: 1 }"
     :in-view-options="{ margin: '-200px 0px' }"
@@ -21,7 +21,10 @@ const id = props.id ? sections[props.id].id : undefined;
 
   <motion.section
     :class="
-      twMerge('mx-auto h-full w-full max-w-7xl px-6 py-6 md:px-10', className)
+      twMerge(
+        'relative z-10 mx-auto h-full w-full max-w-7xl px-6 py-6 md:px-10',
+        className,
+      )
     "
     :id="id"
   >

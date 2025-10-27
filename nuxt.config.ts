@@ -6,10 +6,6 @@ export default defineNuxtConfig({
     "/blog/**": { prerender: false },
   },
 
-  imports: {
-    autoImport: false,
-  },
-
   future: {
     compatibilityVersion: 4,
   },
@@ -21,6 +17,6 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: "2025-07-15",
-
   devtools: { enabled: true },
+  modules: ["@nuxt/eslint"],
 });
