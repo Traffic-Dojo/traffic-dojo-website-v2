@@ -19,6 +19,18 @@ import { useAppConfig } from "#app";
 import AppHeader from "../components/AppHeader.vue";
 
 const { initialSwiperConfig } = useAppConfig();
+
+useSeoMeta({
+  title: "Traffic Dojo - Digital Marketing agency and Lead Generation Services",
+  ogTitle:
+    "Traffic Dojo - Digital Marketing agency and Lead Generation Services",
+  description:
+    "Full services of online advertising: web development and web design, PPC management and social media marketing.",
+  ogDescription:
+    "Full services of online advertising: web development and web design, PPC management and social media marketing.",
+  ogImage: "/og.png",
+  twitterCard: "summary_large_image",
+});
 </script>
 
 <template>

@@ -3,10 +3,14 @@ export const useAnalytics = () => {
 
   function sendAnalyticsEvent(eventName: string, eventPayload?: JSON) {
     if (process.env.NODE_ENV !== "production") {
-      console.log("DEV ANALYTICS", eventName, eventPayload);
+      console.log("sendAnalyticsEvent:", eventName, eventPayload);
     }
 
     gtag("event", eventName, eventPayload);
+
+    if (window && "fbq" in window && typeof window.fbq === "function") {
+      window.fbq("track", eventName, eventPayload);
+    }
   }
 
   return {

@@ -3,7 +3,16 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   routeRules: {
     "/": { prerender: true },
-    "/blog/**": { prerender: false },
+    "/blog/**": { prerender: false, ssr: true },
+  },
+
+  app: {
+    head: {
+      title:
+        "Traffic Dojo - Digital Marketing agency and Lead Generation Services",
+      htmlAttrs: { lang: "en" },
+      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    },
   },
 
   future: {

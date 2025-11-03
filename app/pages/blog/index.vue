@@ -126,7 +126,7 @@ const opacityVariants: Record<string, VariantType> = {
           </div>
 
           <NuxtLink
-            :to="{ name: 'blog', params: { id: slug } }"
+            :to="{ name: 'blog-id', params: { id: slug } }"
             class="hover:text-accent text-lg font-medium transition-colors duration-500"
             >{{ title }}
           </NuxtLink>
