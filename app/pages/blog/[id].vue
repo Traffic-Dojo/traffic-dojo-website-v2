@@ -5,6 +5,8 @@ import {
   createArticleQuery,
 } from "~/server/utils/sanity/queries";
 import { PortableText } from "@portabletext/vue";
+import { motion } from "motion-v";
+import AppLegend from "~/components/AppLegend.vue";
 
 definePageMeta({
   layout: "blog",
@@ -23,7 +25,12 @@ const article = computed(() => data.value[0]!);
 </script>
 
 <template>
-  <div>
+  <motion.div
+    initial="initial"
+    animate="visible"
+    :variants="{ initial: { opacity: 0 }, visible: { opacity: 1 } }"
+    :transition="{ delay: 0.4, duration: 2 }"
+  >
     <NuxtLink
       href="/blog"
       class="border-gray text-gray mb-8 flex w-fit items-center gap-4 rounded-full border px-10 py-2"
@@ -50,11 +57,14 @@ const article = computed(() => data.value[0]!);
         </div>
 
         <div id="blog">
-          <PortableText :value="article.content" />
+          <PortableText
+            :value="article.content"
+            :components="{ types: { image: AppLegend } }"
+          />
         </div>
       </div>
     </article>
-  </div>
+  </motion.div>
 </template>
 
 <style>
@@ -101,6 +111,22 @@ const article = computed(() => data.value[0]!);
 }
 
 #blog h3 {
+  font-weight: 500;
+  font-size: 1.125rem /* 18px */;
+  line-height: 1.75rem /* 28px */;
+
+  @media screen and (min-width: 640px) {
+    font-size: 1.25rem /* 20px */;
+    line-height: 1.75rem /* 28px */;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 1.875rem /* 30px */;
+    line-height: 2.25rem /* 36px */;
+  }
+}
+
+#blog h4 {
   font-weight: 500;
   font-size: 1.125rem /* 18px */;
   line-height: 1.75rem /* 28px */;

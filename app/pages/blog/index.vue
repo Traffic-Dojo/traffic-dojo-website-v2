@@ -80,7 +80,7 @@ const opacityVariants: Record<string, VariantType> = {
         v-for="category in categories"
         :key="category"
         :class="[
-          'hover:text-accent hover:border-accent cursor-pointer rounded-full border px-10 py-2 transition-all duration-500',
+          'hover:text-accent hover:border-accent cursor-pointer rounded-full border px-4 py-1 text-sm transition-colors duration-500 md:px-10 md:py-2 md:text-base',
           {
             'border-accent text-accent': currentCategory === category,
             'text-gray border-gray': currentCategory !== category,
@@ -126,7 +126,7 @@ const opacityVariants: Record<string, VariantType> = {
           </div>
 
           <NuxtLink
-            :href="`/blog/${slug}`"
+            :to="{ name: 'blog', params: { id: slug } }"
             class="hover:text-accent text-lg font-medium transition-colors duration-500"
             >{{ title }}
           </NuxtLink>
@@ -137,24 +137,3 @@ const opacityVariants: Record<string, VariantType> = {
     </motion.div>
   </motion.div>
 </template>
-
-<style scoped>
-.gradient-blue {
-  --multiplier: 2;
-  --minsize: 1200px;
-
-  --minmax: clamp(var(--minsize), 100%, max(100vh, 100vw));
-  --size: calc(var(--minmax) * var(--multiplier));
-
-  width: var(--size);
-  height: var(--size);
-
-  transform: translateY(-50%);
-
-  background: radial-gradient(
-    90% 50% at 50% 50%,
-    var(--color-gradient-blue) 0%,
-    transparent 100%
-  );
-}
-</style>
