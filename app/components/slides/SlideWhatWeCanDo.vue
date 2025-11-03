@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { motion, stagger, type VariantType } from "motion-v";
 import AppSection from "../../components/AppSection.vue";
-import SwiperFixedSlider from "../../components/SwiperFixedSlider.vue";
+import SwiperFixedSlider from "../swiper/SwiperFixedSlider.vue";
 
 import programmerEmoji from "./../../assets/images/emojis/programmer.png";
 import phoneEmoji from "./../../assets/images/emojis/phone.png";

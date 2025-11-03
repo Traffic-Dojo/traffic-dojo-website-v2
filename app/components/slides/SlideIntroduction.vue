@@ -32,8 +32,8 @@ const variants: Record<string, VariantType> = {
 <template>
   <AppSection id="introduction">
     <template #gradients>
-      <div class="gradient-blue"></div>
-      <div class="gradient-pink"></div>
+      <div class="gradient-blue" />
+      <div class="gradient-pink" />
     </template>
 
     <motion.div

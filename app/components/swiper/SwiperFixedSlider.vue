@@ -36,19 +36,19 @@ function slideToIndex(index: number) {
   <div
     class="pointer-events-none absolute inset-0 z-10 flex items-center justify-center"
   >
-    <slot :activeSlideIndex="activeSlideIndex" :slideToIndex="slideToIndex" />
+    <slot
+      :active-slide-index="activeSlideIndex"
+      :slide-to-index="slideToIndex"
+    />
   </div>
 
   <Swiper
+    :nested="true"
+    class="h-screen"
     v-bind="initialSwiperConfig"
     @swiper="onSwiper"
     @slide-change="onHiddenSwiperChange"
-    :nested="true"
   >
-    <SwiperSlide
-      class="opacity-0"
-      v-for="slide in slides"
-      :key="slide"
-    ></SwiperSlide>
+    <SwiperSlide v-for="slide in slides" :key="slide" class="opacity-0" />
   </Swiper>
 </template>

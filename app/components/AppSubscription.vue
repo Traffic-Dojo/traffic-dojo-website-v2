@@ -27,10 +27,10 @@ defineEmits({
       >
         <input
           type="email"
+          placeholder="Enter your email"
+          class="text-textLight placeholder:text-textGray border-textGray max-w-[220px] rounded-none border-t-0 border-r-0 border-b border-l-0 bg-transparent! px-2 py-2 placeholder:text-center autofill:bg-transparent! md:text-lg md:tracking-wider md:placeholder:text-left"
           @mouseenter="$emit('inputEnter')"
           @mouseleave="$emit('inputLeave')"
-          placeholder="Enter your email"
-          class="text-textLight placeholder:text-textGray border-textGray max-w-[220px] rounded-none border-b-[1px] border-l-0 border-r-0 border-t-0 !bg-transparent px-2 py-2 placeholder:text-center autofill:!bg-transparent md:text-lg md:tracking-wider md:placeholder:text-left"
         />
 
         <button

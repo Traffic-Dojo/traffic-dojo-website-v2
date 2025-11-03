@@ -93,14 +93,16 @@ const problemVariants = (index: number): Record<string, VariantType> => {
         >👇🏻 Let's solve them together!</motion.span
       >
 
-      <motion.button
-        class="bg-accent w-fit cursor-pointer rounded-full px-14 py-2 text-lg font-semibold tracking-[2%] shadow-[0px_0px_20.32px_0px_rgba(255,168,0,0.3)] sm:px-12 sm:py-4 sm:text-xl md:text-3xl"
-        :variants="buttonVariants"
-        initial="hidden"
-        while-in-view="visible"
-      >
-        Let's do it
-      </motion.button>
+      <ProposalModal>
+        <motion.button
+          class="bg-accent w-fit cursor-pointer rounded-full px-14 py-2 text-lg font-semibold tracking-[2%] shadow-[0px_0px_20.32px_0px_rgba(255,168,0,0.3)] sm:px-12 sm:py-4 sm:text-xl md:text-3xl"
+          :variants="buttonVariants"
+          initial="hidden"
+          while-in-view="visible"
+        >
+          Let's do it
+        </motion.button>
+      </ProposalModal>
     </div>
 
     <div

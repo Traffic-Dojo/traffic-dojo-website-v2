@@ -3,8 +3,7 @@ import AppMenu from "./AppMenu.vue";
 import AppSocials from "./AppSocials.vue";
 import { motion } from "motion-v";
 
-const consult_link =
-  "https://calendly.com/d/ckmp-37t-5g8/traffic-dojo-free-consultation";
+const { consult_link } = useAppConfig();
 
 withDefaults(defineProps<{ isFixed?: boolean }>(), { isFixed: true });
 </script>
@@ -29,21 +28,23 @@ withDefaults(defineProps<{ isFixed?: boolean }>(), { isFixed: true });
 
       <ul class="flex items-baseline gap-[14px] tracking-wide">
         <li>
-          <button
-            class="bg-accent cursor-pointer rounded-full px-6 py-2 text-[15px] font-medium whitespace-nowrap shadow-[0px_0px_20.16px_0px_rgba(255,168,0,0.3)]"
-          >
-            Proposal request
-          </button>
+          <ProposalModal>
+            <button
+              class="bg-accent cursor-pointer rounded-full px-6 py-2 text-[15px] font-medium whitespace-nowrap shadow-[0px_0px_20.16px_0px_rgba(255,168,0,0.3)]"
+            >
+              Proposal request
+            </button>
+          </ProposalModal>
         </li>
 
         <li class="hidden sm:inline">
-          <a
+          <NuxtLink
             target="_blank"
             :href="consult_link"
-            class="rounded-full bg-white px-6 py-2 text-sm leading-none whitespace-nowrap text-black"
+            class="cursor-pointer rounded-full bg-white px-6 py-2 text-sm leading-none whitespace-nowrap text-black"
           >
             Schedule a Call
-          </a>
+          </NuxtLink>
         </li>
       </ul>
     </nav>

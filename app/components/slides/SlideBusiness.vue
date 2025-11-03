@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import AppSection from "./../../components/AppSection.vue";
-import SwiperFixedSlider from "./../../components/SwiperFixedSlider.vue";
+import SwiperFixedSlider from "../swiper/SwiperFixedSlider.vue";
 import { motion } from "motion-v";
 
 const slides = [
@@ -32,7 +32,7 @@ const slides = [
 <template>
   <SwiperFixedSlider :slides="slides.length">
     <template #default="{ activeSlideIndex, slideToIndex }">
-      <AppSection class-name="flex items-center justify-center" id="businesses">
+      <AppSection id="businesses" class-name="flex items-center justify-center">
         <template #gradients>
           <motion.div
             :initial="{ opacity: 0 }"
@@ -42,14 +42,14 @@ const slides = [
             }"
             :transition="{ duration: 0.6 }"
             class="earth absolute inset-0"
-          ></motion.div>
+          />
 
           <motion.div
             :initial="{ opacity: 0 }"
             :while-in-view="{ opacity: [1, 0.75, 0.5, 0.15][activeSlideIndex] }"
             :transition="{ duration: 0.6 }"
             class="colors absolute inset-0"
-          ></motion.div>
+          />
         </template>
 
         <div
@@ -73,8 +73,8 @@ const slides = [
 
           <div class="flex max-w-[615px] flex-col gap-8">
             <motion.div
-              class="relative flex flex-col gap-4 text-left"
               :key="activeSlideIndex"
+              class="relative flex flex-col gap-4 text-left"
             >
               <motion.h3
                 initial="hidden"
@@ -123,12 +123,12 @@ const slides = [
               <button
                 v-for="(_, i) in slides"
                 :key="i"
-                class="pointer-events-auto aspect-square h-4 cursor-pointer rounded-full bg-white !p-0 transition-opacity duration-500"
+                class="pointer-events-auto aspect-square h-4 cursor-pointer rounded-full bg-white p-0! transition-opacity duration-500"
                 :class="{
                   'opacity-20': i !== activeSlideIndex,
                 }"
                 @click="slideToIndex(i)"
-              ></button>
+              />
             </motion.div>
           </div>
         </div>

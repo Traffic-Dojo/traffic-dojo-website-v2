@@ -45,14 +45,16 @@ const buttonVariants: Record<string, VariantType> = {
       It's Proposal Time
     </motion.h2>
 
-    <motion.button
-      class="bg-accent shadow-accent order-1 w-fit rounded-full px-8 py-3 text-lg tracking-wide md:place-self-start md:text-2xl md:font-semibold"
-      :variants="buttonVariants"
-      initial="hidden"
-      while-in-view="visible"
-    >
-      Request proposal
-    </motion.button>
+    <ProposalModal>
+      <motion.button
+        class="bg-accent shadow-accent order-1 w-fit cursor-pointer rounded-full px-8 py-3 text-lg tracking-wide md:place-self-start md:text-2xl md:font-semibold"
+        :variants="buttonVariants"
+        initial="hidden"
+        while-in-view="visible"
+      >
+        Request proposal
+      </motion.button>
+    </ProposalModal>
 
     <motion.div
       class="md:row-span-2"
