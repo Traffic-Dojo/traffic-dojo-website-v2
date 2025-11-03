@@ -16,7 +16,12 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 
+  gtag: {
+    enabled: process.env.NODE_ENV === "production",
+    id: "G-0CEC8EKLH8",
+  },
+
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
-  modules: ["@nuxt/eslint"],
+  modules: ["@nuxt/eslint", "nuxt-gtag"],
 });

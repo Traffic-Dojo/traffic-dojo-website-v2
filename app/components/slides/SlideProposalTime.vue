@@ -21,6 +21,8 @@ const buttonVariants: Record<string, VariantType> = {
   hidden: { opacity: 0, transition: { duration: 1 } },
   visible: { opacity: 1, transition: { duration: 1.6, delay: 2.4 } },
 };
+
+const { sendAnalyticsEvent } = useAnalytics();
 </script>
 
 <template>
@@ -33,7 +35,8 @@ const buttonVariants: Record<string, VariantType> = {
         :variants="gradientVariants"
         initial="hidden"
         while-in-view="visible"
-      ></motion.div>
+        @click="sendAnalyticsEvent('proposal_time')"
+      />
     </template>
 
     <motion.h2

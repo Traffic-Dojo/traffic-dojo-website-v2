@@ -1,31 +1,31 @@
 <script setup lang="ts">
 const emit = defineEmits<{
-  close: []
-}>()
+  close: [];
+}>();
 </script>
 
 <template>
-  <Transition
-    appear
-    name="fly"
-  >
-    <div class="flex flex-col items-center justify-around flex-grow sm:items-start sm:gap-y-12">
-      <div class="flex flex-col gap-7 items-center sm:items-start">
-        <div class="flex flex-col gap-7 items-center sm:flex-row">
+  <Transition appear name="fly">
+    <div
+      class="flex grow flex-col items-center justify-around sm:items-start sm:gap-y-12"
+    >
+      <div class="flex flex-col items-center gap-7 sm:items-start">
+        <div class="flex flex-col items-center gap-7 sm:flex-row">
           <img
-            class="aspect-square h-[39px] w-[39px] sm:h-[59px] sm:w-[59px] flex-grow-0"
-            src="/images/success.png"
+            class="aspect-square h-[39px] w-[39px] grow-0 sm:h-[59px] sm:w-[59px]"
+            src="~assets/images/success.png"
             alt="Email has been sent"
-          >
+          />
           <span class="text-4xl font-semibold sm:text-7xl">Thank you!</span>
         </div>
         <p class="sm:text-2xl">
-          Your contacts has been sent and we are <br> already preparing the best offer for you.
+          Your contacts has been sent and we are <br />
+          already preparing the best offer for you.
         </p>
       </div>
 
       <button
-        class="bg-accent text-modalText rounded-full px-12 py-3 text-xl w-fit mx-auto sm:m-0"
+        class="bg-accent text-modalText mx-auto w-fit rounded-full px-12 py-3 text-xl sm:m-0"
         @click="emit('close')"
       >
         Close

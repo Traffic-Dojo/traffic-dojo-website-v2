@@ -23,6 +23,18 @@ const variants: Record<string, VariantType> = {
   },
 };
 
+const props = defineProps<{
+  analytics?: { eventName: string; eventPayload?: JSON };
+}>();
+
+const { sendAnalyticsEvent } = useAnalytics();
+
+watchEffect(() => {
+  if (shouldShow.value && props.analytics) {
+    sendAnalyticsEvent(props.analytics.eventName, props.analytics.eventPayload);
+  }
+});
+
 /**
  * in schemas.ts file we have custom telephone input validation and no matter if we have
  * validationOnMount = false on whole <Form> element on in useField composable,
@@ -48,11 +60,11 @@ const errors = computed(() =>
 
 <template>
   <motion.div
+    v-if="shouldShow"
     initial="hidden"
     animate="visible"
     :variants="variants"
     class="flex flex-col gap-8"
-    v-if="shouldShow"
   >
     <motion.div
       :variants="variants"

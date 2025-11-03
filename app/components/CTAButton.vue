@@ -1,17 +1,12 @@
 <script lang="ts" setup>
 import IconPlay from "./icons/IconPlay.vue";
 import { motion } from "motion-v";
-
-defineEmits({
-  click: null,
-});
 </script>
 
 <template>
   <motion.button
     ref="buttonRef"
     class="relative col-span-2 flex cursor-pointer items-center gap-7 justify-self-center rounded-full px-8 py-3 text-2xl font-medium"
-    @click="$emit('click')"
   >
     <span>Start your path</span>
     <IconPlay />

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 const { contacts } = useAppConfig();
+const { sendAnalyticsEvent } = useAnalytics();
 </script>
 
 <template>
@@ -11,7 +12,7 @@ const { contacts } = useAppConfig();
       :key="name"
       :href="href"
       target="_blank"
-      @click="console.log('analytics', event)"
+      @click="sendAnalyticsEvent(event)"
     >
       {{ name }}
     </a>

@@ -27,7 +27,7 @@ const checkboxes = [
 </script>
 
 <template>
-  <FormWizardStep>
+  <FormWizardStep :analytics="{ eventName: 'step_marketing_needs' }">
     <template #title>
       What Are Your Digital <br />
       Marketing Needs?

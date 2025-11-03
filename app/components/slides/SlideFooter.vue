@@ -27,12 +27,12 @@ const listVariants = {
 </script>
 
 <template>
-  <AppSection class-name="flex items-center justify-center" id="contacts">
+  <AppSection id="contacts" class-name="flex items-center justify-center">
     <template #gradients>
       <motion.div
+        ref="scope"
         :initial="{ opacity: 0, x: '-25%' }"
         :while-in-view="{ opacity: 1, x: '-25%' }"
-        ref="scope"
         class="gradient-blue"
       />
     </template>

@@ -3,6 +3,12 @@ defineEmits({
   inputEnter: null,
   inputLeave: null,
 });
+
+const { sendAnalyticsEvent } = useAnalytics();
+
+function subscribeToEmails() {
+  sendAnalyticsEvent("subscribe_email");
+}
 </script>
 
 <template>
@@ -24,6 +30,7 @@ defineEmits({
       <form
         class="flex w-full max-w-[200px] flex-col items-center gap-4 md:max-w-full"
         method="POST"
+        @submit="subscribeToEmails"
       >
         <input
           type="email"

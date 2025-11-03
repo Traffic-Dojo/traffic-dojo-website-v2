@@ -57,6 +57,8 @@ const problemVariants = (index: number): Record<string, VariantType> => {
     },
   };
 };
+
+const { sendAnalyticsEvent } = useAnalytics();
 </script>
 
 <template>
@@ -99,6 +101,7 @@ const problemVariants = (index: number): Record<string, VariantType> => {
           :variants="buttonVariants"
           initial="hidden"
           while-in-view="visible"
+          @click="sendAnalyticsEvent('lets_solve_problems_button')"
         >
           Let's do it
         </motion.button>

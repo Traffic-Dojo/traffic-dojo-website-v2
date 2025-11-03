@@ -6,6 +6,8 @@ import { motion } from "motion-v";
 const { consult_link } = useAppConfig();
 
 withDefaults(defineProps<{ isFixed?: boolean }>(), { isFixed: true });
+
+const { sendAnalyticsEvent } = useAnalytics();
 </script>
 
 <template>
@@ -31,6 +33,7 @@ withDefaults(defineProps<{ isFixed?: boolean }>(), { isFixed: true });
           <ProposalModal>
             <button
               class="bg-accent cursor-pointer rounded-full px-6 py-2 text-[15px] font-medium whitespace-nowrap shadow-[0px_0px_20.16px_0px_rgba(255,168,0,0.3)]"
+              @click="sendAnalyticsEvent('proposal_request')"
             >
               Proposal request
             </button>
@@ -42,6 +45,7 @@ withDefaults(defineProps<{ isFixed?: boolean }>(), { isFixed: true });
             target="_blank"
             :href="consult_link"
             class="cursor-pointer rounded-full bg-white px-6 py-2 text-sm leading-none whitespace-nowrap text-black"
+            @click="sendAnalyticsEvent('schedule_call')"
           >
             Schedule a Call
           </NuxtLink>

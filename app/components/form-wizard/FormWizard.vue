@@ -76,9 +76,9 @@ const onInvalidSubmit = ({
   <Form
     :validation-schema="currentSchema"
     :keep-values="true"
+    :validate-on-mount="false"
     @submit="onSubmit"
     @invalid-submit="onInvalidSubmit"
-    :validate-on-mount="false"
   >
     <slot />
   </Form>

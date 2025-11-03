@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { z } from "zod";
-import { MarketingBudgetSchema } from "../schemas";
+import type { z } from "zod";
+import type { MarketingBudgetSchema } from "../schemas";
 import FormWizardStep from "../../../form-wizard/FormWizardStep.vue";
 import AppRadioGroup from "../../../inputs/AppRadioGroup.vue";
 
@@ -18,7 +18,7 @@ const budgets: {
 </script>
 
 <template>
-  <FormWizardStep>
+  <FormWizardStep :analytics="{ eventName: 'step_marketing_budget' }">
     <template #title>
       What's Your Monthly<br />
       Digital Marketing Budget?

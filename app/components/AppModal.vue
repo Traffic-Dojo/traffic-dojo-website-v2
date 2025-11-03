@@ -40,7 +40,7 @@ const contentVariants: Record<string, VariantType> = {
 
 const contentStyleVariants = {
   center:
-    "text-black-modal absolute top-[50%] left-[50%] z-[100] mx-4 max-h-[85vh] w-full max-w-4xl translate-x-[-50%] translate-y-[-50%] overflow-auto rounded-4xl bg-white p-[25px] px-11 py-10 focus:outline-none sm:mx-0",
+    "text-black-modal absolute top-1/2 left-1/2 z-100 max-h-[85vh] w-full max-w-4xl -translate-x-1/2 -translate-y-1/2 overflow-auto rounded-4xl bg-white px-6 sm:px-10 py-10 focus:outline-none",
   fullscreen:
     "absolute top-[calc(90px+32px)] left-1/2 w-full max-w-7xl -translate-x-1/2 px-11 focus:outline-none bg-transparent text-white",
 } as const;
@@ -58,7 +58,7 @@ function closeModal() {
       <slot name="trigger" :open />
     </DialogTrigger>
 
-    <DialogPortal forceMount>
+    <DialogPortal force-mount>
       <AnimatePresence>
         <DialogOverlay
           :as="motion.div"
@@ -83,7 +83,7 @@ function closeModal() {
           exit="closed"
           :class="
             twMerge(
-              'z-[100]',
+              'z-100',
               contentStyleVariants[props.variant],
               contentClassName,
             )
@@ -101,7 +101,7 @@ function closeModal() {
 
           <DialogDescription v-else>{{ description.label }}</DialogDescription>
 
-          <slot name="content" :open :closeModal />
+          <slot name="content" :open :close-modal />
 
           <DialogClose
             v-if="withClose"

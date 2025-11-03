@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { z } from "zod";
-import { TargetMarketSchema } from "../schemas";
+import type { TargetMarketSchema } from "../schemas";
 import FormWizardStep from "../../../form-wizard/FormWizardStep.vue";
 import AppRadioGroup from "../../../inputs/AppRadioGroup.vue";
 
@@ -16,7 +16,7 @@ const target_options: {
 </script>
 
 <template>
-  <FormWizardStep>
+  <FormWizardStep :analytics="{ eventName: 'step_target_market' }">
     <template #title>
       What's Your <br />
       Target Market?

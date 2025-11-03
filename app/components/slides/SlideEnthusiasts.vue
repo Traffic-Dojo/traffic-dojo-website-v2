@@ -4,9 +4,9 @@ import { motion } from "motion-v";
 </script>
 
 <template>
-  <AppSection class-name="content-center" id="we">
+  <AppSection id="we" class-name="content-center">
     <template #gradients>
-      <motion.div class="gradient-blue"></motion.div>
+      <motion.div class="gradient-blue" />
     </template>
 
     <div

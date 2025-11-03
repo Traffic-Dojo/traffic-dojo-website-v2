@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { type z } from "zod";
-import { CurrentSituationSchema } from "../schemas";
+import type { z } from "zod";
+import type { CurrentSituationSchema } from "../schemas";
 import FormWizardStep from "../../../form-wizard/FormWizardStep.vue";
 import AppRadioGroup from "../../../inputs/AppRadioGroup.vue";
 
@@ -15,7 +15,7 @@ const situations: {
 </script>
 
 <template>
-  <FormWizardStep>
+  <FormWizardStep :analytics="{ eventName: 'step_current_situation' }">
     <template #title>
       Which Best Describes <br />
       Your Current Situation?

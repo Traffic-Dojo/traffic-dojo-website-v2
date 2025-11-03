@@ -5,7 +5,7 @@ import AppTelephoneInput from "../../../inputs/AppTelephoneInput.vue";
 </script>
 
 <template>
-  <FormWizardStep>
+  <FormWizardStep :analytics="{ eventName: 'step_business_information' }">
     <template #title>
       Enter your email and <br />
       get proposal request
