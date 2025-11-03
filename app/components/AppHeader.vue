@@ -5,6 +5,8 @@ import { motion } from "motion-v";
 
 const consult_link =
   "https://calendly.com/d/ckmp-37t-5g8/traffic-dojo-free-consultation";
+
+withDefaults(defineProps<{ isFixed?: boolean }>(), { isFixed: true });
 </script>
 
 <template>
@@ -12,7 +14,13 @@ const consult_link =
     :initial="{ opacity: 0 }"
     :animate="{ opacity: 1 }"
     :transition="{ duration: 3 }"
-    class="paddings fixed top-0 left-1/2 z-50 flex h-[90px] w-full max-w-7xl -translate-x-1/2 items-center justify-between px-8"
+    :class="[
+      'paddings container flex h-[90px] w-full items-center justify-between px-8',
+      {
+        'fixed top-0 left-1/2 z-50 -translate-x-1/2': isFixed,
+        'mx-auto': !isFixed,
+      },
+    ]"
   >
     <AppMenu />
 

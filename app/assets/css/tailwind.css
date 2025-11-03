@@ -50,6 +50,7 @@ html {
   scroll-behavior: smooth;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   overflow-x: hidden;
+  background-color: var(--color-background);
 }
 
 html::-webkit-scrollbar {

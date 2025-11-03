@@ -35,7 +35,7 @@ const listVariants: Record<string, VariantType> = {
   >
     <template #trigger="{ open }">
       <button
-        class="sm:text-gray sm:border-gray cursor-pointer px-2 py-2 transition-all duration-500 hover:border-white hover:text-white sm:rounded-full sm:border sm:px-10"
+        class="sm:text-gray sm:border-gray cursor-pointer px-2 py-2 transition-colors duration-500 hover:border-white hover:text-white sm:rounded-full sm:border sm:px-10"
         :class="{ 'sm:border-white sm:text-white': open }"
       >
         <span class="hidden sm:inline">{{ open ? "Close" : "Menu" }}</span>
@@ -43,9 +43,9 @@ const listVariants: Record<string, VariantType> = {
         <div class="flex w-[36px] flex-col gap-2 sm:hidden">
           <span
             v-for="(_, index) in 3"
-            class="bg-textGray h-[2px] w-full"
             :key="index"
-          ></span>
+            class="bg-textGray h-[2px] w-full"
+          />
         </div>
       </button>
     </template>

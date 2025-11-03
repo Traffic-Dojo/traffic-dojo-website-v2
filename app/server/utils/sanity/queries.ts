@@ -1,3 +1,4 @@
+import type { PortableTextProps } from "@portabletext/vue";
 import { defineQuery } from "groq";
 
 export const allArticlesQuery =
@@ -40,4 +41,5 @@ export interface PreviewArticle {
   preview: string;
   full: string;
   mobile: string;
+  content: PortableTextProps["value"];
 }

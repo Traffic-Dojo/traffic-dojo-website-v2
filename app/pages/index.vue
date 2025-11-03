@@ -15,46 +15,50 @@ import SlideFooter from "./../components/slides/SlideFooter.vue";
 
 import { MotionConfig } from "motion-v";
 import { useAppConfig } from "#app";
+
 import AppHeader from "../components/AppHeader.vue";
 
 const { initialSwiperConfig } = useAppConfig();
 </script>
 
 <template>
-  <AppHeader />
-  <MotionConfig :in-view-options="{ once: true }">
-    <Swiper v-bind="initialSwiperConfig">
-      <SwiperSlide>
-        <SlideIntroduction />
-      </SwiperSlide>
+  <div>
+    <AppHeader />
+    <MotionConfig :in-view-options="{ once: true }">
+      <!-- @vue-expect-error for some reason requires optional props -->
+      <Swiper class="h-screen" v-bind="initialSwiperConfig">
+        <SwiperSlide>
+          <SlideIntroduction />
+        </SwiperSlide>
 
-      <SwiperSlide>
-        <SlideEnthusiasts />
-      </SwiperSlide>
+        <SwiperSlide>
+          <SlideEnthusiasts />
+        </SwiperSlide>
 
-      <SwiperSlide>
-        <SlidePurpose />
-      </SwiperSlide>
+        <SwiperSlide>
+          <SlidePurpose />
+        </SwiperSlide>
 
-      <SwiperSlide>
-        <SlideBusiness />
-      </SwiperSlide>
+        <SwiperSlide>
+          <SlideBusiness />
+        </SwiperSlide>
 
-      <SwiperSlide>
-        <SlideProblems />
-      </SwiperSlide>
+        <SwiperSlide>
+          <SlideProblems />
+        </SwiperSlide>
 
-      <SwiperSlide>
-        <SlideWhatWeCanDo />
-      </SwiperSlide>
+        <SwiperSlide>
+          <SlideWhatWeCanDo />
+        </SwiperSlide>
 
-      <SwiperSlide>
-        <SlideProposalTime />
-      </SwiperSlide>
+        <SwiperSlide>
+          <SlideProposalTime />
+        </SwiperSlide>
 
-      <SwiperSlide>
-        <SlideFooter />
-      </SwiperSlide>
-    </Swiper>
-  </MotionConfig>
+        <SwiperSlide>
+          <SlideFooter />
+        </SwiperSlide>
+      </Swiper>
+    </MotionConfig>
+  </div>
 </template>

@@ -4,8 +4,11 @@ import {
   type PreviewArticle,
 } from "../../server/utils/sanity/queries";
 import { sanityClient } from "../../server/utils/sanity/client";
-import AppSection from "~/components/AppSection.vue";
 import { motion, stagger, type VariantType } from "motion-v";
+
+definePageMeta({
+  layout: "blog",
+});
 
 const currentCategory = ref<string | null>(null);
 
@@ -19,7 +22,9 @@ function onCategoryChange(category: string) {
 
 const { data: articles } = useAsyncData<PreviewArticle[]>(
   () => sanityClient.fetch(allArticlesQuery),
-  { default: () => [] },
+  {
+    default: () => [],
+  },
 );
 
 const categories = computed(() =>
@@ -39,111 +44,98 @@ const filteredPosts = computed(() =>
 // add params.id to links instead of using anchors
 // https://nuxt.com/docs/4.x/api/components/nuxt-link
 
-const containerVariants: Record<string, VariantType> = {
+const opacityVariants: Record<string, VariantType> = {
   hidden: {
-    opacity: 0,
     y: -10,
+    opacity: 0,
   },
   visible: {
-    opacity: 1,
     y: 0,
+    opacity: 1,
     transition: {
       duration: 1,
-      delayChildren: stagger(0.2),
     },
-  },
-};
-
-const categoryButtonVariants: Record<string, VariantType> = {
-  hidden: {
-    opacity: 0,
-  },
-  visible: {
-    opacity: 1,
   },
 };
 </script>
 
 <template>
-  <AppSection>
-    <template #gradients>
-      <div class="gradient-blue"></div>
-    </template>
-
-    <motion.div
-      initial="hidden"
-      while-in-view="visible"
-      class="container mx-auto flex flex-col gap-6 p-12"
+  <motion.div
+    initial="hidden"
+    while-in-view="visible"
+    :in-view-options="{ once: true }"
+    :transition="{ duration: 2, delayChildren: stagger(0.4) }"
+    class="flex flex-col gap-6"
+  >
+    <motion.h1 class="text-3xl font-medium" :variants="opacityVariants"
+      >Blog</motion.h1
     >
-      <motion.h1 class="text-3xl font-medium">Blog</motion.h1>
 
-      <motion.div
-        initial="hidden"
-        while-in-view="visible"
-        :variants="containerVariants"
-        class="flex flex-wrap items-center gap-4"
+    <!-- Categories -->
+    <motion.div
+      :variants="opacityVariants"
+      class="flex flex-wrap items-center gap-4"
+    >
+      <motion.button
+        v-for="category in categories"
+        :key="category"
+        :class="[
+          'hover:text-accent hover:border-accent cursor-pointer rounded-full border px-10 py-2 transition-all duration-500',
+          {
+            'border-accent text-accent': currentCategory === category,
+            'text-gray border-gray': currentCategory !== category,
+          },
+        ]"
+        @click="onCategoryChange(category)"
       >
-        <motion.button
-          :variants="categoryButtonVariants"
-          v-for="category in categories"
-          :key="category"
-          @click="onCategoryChange(category)"
-          :class="[
-            'hover:text-accent hover:border-accent cursor-pointer rounded-full border px-10 py-2 transition-all duration-500',
-            {
-              'border-accent text-accent': currentCategory === category,
-              'text-gray border-gray': currentCategory !== category,
-            },
-          ]"
-        >
-          {{ category }}
-        </motion.button>
-      </motion.div>
+        {{ category }}
+      </motion.button>
+    </motion.div>
 
+    <!-- Articles -->
+    <motion.div
+      class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-x-8 gap-y-16"
+      :variants="opacityVariants"
+    >
       <motion.div
-        :variants="categoryButtonVariants"
-        class="grid justify-center gap-x-8 gap-y-16 md:grid-cols-2"
+        v-for="{
+          date,
+          category,
+          slug,
+          title,
+          mobile,
+          description,
+          preview,
+        } in filteredPosts"
+        :key="title"
+        class="flex flex-col gap-4 lg:gap-x-8"
       >
-        <motion.div
-          v-for="{
-            date,
-            category,
-            slug,
-            title,
-            mobile,
-            description,
-            preview,
-          } in filteredPosts"
-          class="flex max-w-xl flex-col gap-4 lg:gap-x-8"
-          :key="title"
-        >
-          <picture>
-            <source :srcset="preview" media="(min-width: 1024px)" />
-            <img
-              class="w-full rounded-xl object-contain lg:aspect-square"
-              :src="mobile"
-              alt="Preview"
-            />
-          </picture>
+        <picture>
+          <source :srcset="preview" media="(min-width: 1024px)" />
+          <img
+            class="w-full rounded-xl object-contain lg:aspect-square"
+            :src="mobile"
+            alt="Preview"
+          />
+        </picture>
 
-          <div class="flex flex-col gap-4">
-            <div class="text-gray flex items-center gap-4 font-light">
-              <span>{{ new Date(date).toLocaleDateString() }}</span>
-              <span>{{ category }}</span>
-            </div>
-
-            <NuxtLink
-              :href="`/blog/${slug}`"
-              class="hover:text-accent text-lg font-medium transition-colors duration-500"
-              >{{ title }}
-            </NuxtLink>
-
-            <span class="font-light">{{ description }}</span>
+        <div class="flex flex-col gap-4">
+          <div class="text-gray flex items-center gap-4 font-light">
+            <span>{{ new Date(date).toLocaleDateString() }}</span>
+            <span>{{ category }}</span>
           </div>
-        </motion.div>
+
+          <NuxtLink
+            :href="`/blog/${slug}`"
+            class="hover:text-accent text-lg font-medium transition-colors duration-500"
+            >{{ title }}
+          </NuxtLink>
+
+          <span class="font-light">{{ description }}</span>
+        </div>
       </motion.div>
     </motion.div>
-  </AppSection>
+  </motion.div>
 </template>
 
 <style scoped>
@@ -153,8 +145,6 @@ const categoryButtonVariants: Record<string, VariantType> = {
 
   --minmax: clamp(var(--minsize), 100%, max(100vh, 100vw));
   --size: calc(var(--minmax) * var(--multiplier));
-
-  position: absolute;
 
   width: var(--size);
   height: var(--size);

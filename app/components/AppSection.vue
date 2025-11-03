@@ -20,13 +20,13 @@ const id = props.id ? sections[props.id].id : undefined;
   </motion.div>
 
   <motion.section
+    :id="id"
     :class="
       twMerge(
         'relative z-10 mx-auto h-full w-full max-w-7xl px-6 py-6 md:px-10',
         className,
       )
     "
-    :id="id"
   >
     <slot />
   </motion.section>

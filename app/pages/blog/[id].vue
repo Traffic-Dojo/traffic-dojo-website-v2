@@ -1,57 +1,60 @@
 <script setup lang="ts">
+import { sanityClient } from "~/server/utils/sanity/client";
+import {
+  type PreviewArticle,
+  createArticleQuery,
+} from "~/server/utils/sanity/queries";
+import { PortableText } from "@portabletext/vue";
+
+definePageMeta({
+  layout: "blog",
+});
+
 const route = useRoute();
 
-/**
- * TODO:
- * 1. fetch articles based on route.params.id
- * 2. fix styles
- * 3. vue markdown component
- */
+const { data } = useAsyncData<PreviewArticle[]>(
+  () => sanityClient.fetch(createArticleQuery(route.params.id as string)),
+  {
+    default: () => [],
+  },
+);
+
+const article = computed(() => data.value[0]!);
 </script>
 
 <template>
-  <div class="flex h-[90px] items-center">
-    <Button
+  <div>
+    <NuxtLink
       href="/blog"
-      class="border-textGray text-textGray mb-8 flex w-fit items-center gap-4 rounded-full border px-8"
+      class="border-gray text-gray mb-8 flex w-fit items-center gap-4 rounded-full border px-10 py-2"
     >
       <span>Back</span>
-    </Button>
-  </div>
+    </NuxtLink>
 
-  <article
-    class="mx-auto flex h-[calc(100svh-270px)] max-w-5xl flex-col gap-4 overflow-y-auto"
-  >
-    <div class="flex flex-col gap-4 md:flex-row md:gap-x-10">
-      <picture class="shrink-0 md:w-full md:max-w-[247px]">
-        <!-- <source srcset="{full}" media="(min-width: 768px)" /> -->
-        <!-- <img
-          src="{mobile}"
-          alt="Thumbnail"
-          class="rounded-xl md:fixed md:w-full md:max-w-xs"
-        /> -->
+    <article
+      class="flex flex-col gap-4 md:grid md:grid-cols-[320px_1fr] md:gap-x-10"
+    >
+      <picture>
+        <source :srcset="article.full" media="(min-width: 768px)" />
+        <img
+          :src="article.mobile"
+          :alt="article.title"
+          class="rounded-xl md:fixed md:w-xs"
+        />
       </picture>
 
       <div class="flex flex-col gap-4">
-        <div class="text-textGray flex items-center gap-4">
-          <span>{new Date(date).toLocaleDateString()}</span>
-          <span>{category}</span>
+        <div class="text-gray flex items-center gap-4">
+          <span>{{ new Date(article.date).toLocaleDateString() }}</span>
+          <span>{{ article.category }}</span>
         </div>
 
         <div id="blog">
-          <!-- TODO: add markdown component -->
-          <!-- <PortableText
-					value={content}
-					components={{
-						types: {
-							image: Legend
-						}
-					}}
-				/> -->
+          <PortableText :value="article.content" />
         </div>
       </div>
-    </div>
-  </article>
+    </article>
+  </div>
 </template>
 
 <style>
@@ -65,7 +68,7 @@ const route = useRoute();
   }
 }
 
-#blog :global(h1) {
+#blog h1 {
   font-weight: 500;
   font-size: 1.125rem /* 18px */;
   line-height: 1.75rem /* 28px */;
@@ -81,7 +84,7 @@ const route = useRoute();
   }
 }
 
-#blog :global(h2) {
+#blog h2 {
   font-weight: 500;
   font-size: 1.125rem /* 18px */;
   line-height: 1.75rem /* 28px */;
@@ -97,7 +100,7 @@ const route = useRoute();
   }
 }
 
-#blog :global(h3) {
+#blog h3 {
   font-weight: 500;
   font-size: 1.125rem /* 18px */;
   line-height: 1.75rem /* 28px */;
@@ -113,7 +116,7 @@ const route = useRoute();
   }
 }
 
-#blog :global(p) {
+#blog p {
   @apply text-sm;
 
   @media screen and (min-width: 640px) {
@@ -127,7 +130,7 @@ const route = useRoute();
   }
 }
 
-#blog :global(span) {
+#blog span {
   @apply text-sm;
 
   @media screen and (min-width: 640px) {
@@ -141,7 +144,7 @@ const route = useRoute();
   }
 }
 
-#blog :global(ol) {
+#blog ol {
   @apply text-sm;
 
   @media screen and (min-width: 640px) {
@@ -155,7 +158,7 @@ const route = useRoute();
   }
 }
 
-#blog :global(ul) {
+#blog ul {
   @apply text-sm;
 
   @media screen and (min-width: 640px) {
@@ -169,12 +172,12 @@ const route = useRoute();
   }
 }
 
-#blog :global(ul) {
+#blog ul {
   list-style-type: disc;
   padding-left: 1.25rem;
 }
 
-#blog :global(ol) {
+#blog ol {
   list-style-type: decimal;
   padding-left: 1.25rem;
 }
