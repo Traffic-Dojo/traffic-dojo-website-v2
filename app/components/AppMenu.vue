@@ -59,8 +59,9 @@ const listVariants: Record<string, VariantType> = {
             :variants="listVariants"
           >
             <NuxtLink
+              external
               class="relative w-fit text-[28px] before:absolute before:-bottom-1 before:h-px before:w-full before:origin-left before:scale-x-0 before:bg-white before:transition-all before:duration-500 hover:before:scale-x-100 md:text-3xl"
-              :href="href"
+              :href
               >{{ label }}</NuxtLink
             >
           </motion.li>

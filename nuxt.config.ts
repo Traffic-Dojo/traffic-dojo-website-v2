@@ -19,6 +19,10 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
 
+  supabase: {
+    redirect: false,
+  },
+
   css: ["~/assets/css/tailwind.css", "~/assets/css/fonts.css"],
 
   vite: {

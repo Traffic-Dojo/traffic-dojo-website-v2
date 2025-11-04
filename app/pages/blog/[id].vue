@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { sanityClient } from "~/server/utils/sanity/client";
+import { sanityClient } from "~~/server/utils/sanity/client";
 import {
-  type PreviewArticle,
   createArticleQuery,
-} from "~/server/utils/sanity/queries";
+  type PreviewArticle,
+} from "~~/server/utils/sanity/queries";
 import { PortableText } from "@portabletext/vue";
-import { motion } from "motion-v";
 import AppLegend from "~/components/AppLegend.vue";
 
 definePageMeta({

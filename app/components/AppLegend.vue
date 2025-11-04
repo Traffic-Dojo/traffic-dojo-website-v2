@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PortableTextComponentProps } from "@portabletext/vue";
-import { sanityImageBuilder } from "~/server/utils/sanity/image";
+import { sanityImageBuilder } from "~~/server/utils/sanity/image";
 
 const props = defineProps<
   PortableTextComponentProps<{
