@@ -26,18 +26,18 @@ const { value, handleBlur, errorMessage, handleChange, meta } = useField(
     </label>
 
     <VueTelInput
+      mode="international"
       :value
       :name="name"
-      mode="international"
-      @blur="handleBlur"
-      @on-input="handleChange"
       :placeholder
       :class="[
-        'has-focus:focusable! h-[36px]! max-w-xs! rounded-full! border-0! px-4! py-2! text-sm! font-normal! tracking-wide! outline! outline-black! focus-within:shadow-none!',
+        'has-focus:focusable! h-[36px]! max-w-full! rounded-full! border-0! px-4! py-2! text-sm! font-normal! tracking-wide! outline! outline-black! focus-within:shadow-none!',
         {
           'text-danger! outline-danger!': errorMessage && meta.touched,
         },
       ]"
+      @blur="handleBlur"
+      @on-input="handleChange"
     />
   </div>
 </template>

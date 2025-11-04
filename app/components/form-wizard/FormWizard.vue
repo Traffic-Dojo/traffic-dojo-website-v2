@@ -2,7 +2,7 @@
 import { toTypedSchema } from "@vee-validate/zod";
 import { Form } from "vee-validate";
 import { ref, computed, provide } from "vue";
-import type { ZodSchema } from "zod";
+import z, { type ZodSchema } from "zod";
 
 const props = defineProps({
   validationSchema: {
@@ -12,34 +12,33 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["submit"]);
+
 const currentStepIdx = ref(0);
-
-// Injects the starting step, child <form-steps> will use this to generate their ids
 const stepCounter = ref(0);
-provide("STEP_COUNTER", stepCounter);
 
-// Inject the live ref of the current index to child components
-// will be used to toggle each form-step visibility
+provide("STEP_COUNTER", stepCounter);
 provide("CURRENT_STEP_INDEX", currentStepIdx);
 
-// if this is the last step
 const isLastStep = computed(() => {
   return currentStepIdx.value === stepCounter.value - 1;
 });
 
-// const hasPrevious = computed(() => {
-//   return currentStepIdx.value > 0;
-// });
-
 const currentSchema = computed(() => {
-  return toTypedSchema(
-    props.validationSchema[currentStepIdx.value] as ZodSchema,
-  );
+  const schemas = props.validationSchema.slice(
+    0,
+    currentStepIdx.value + 1,
+  ) as ZodSchema[];
+
+  // warn: we need to create a merged schema, because onSubmit function gets values only
+  // from the current schema, not from all of them
+  const mergedSchema = schemas.reduce((acc, schema) => {
+    return acc.merge(schema);
+  }, z.object({}));
+
+  return toTypedSchema(mergedSchema);
 });
 
 const onSubmit = (values: unknown) => {
-  console.log("onSubmit called with values:", values);
-
   if (!isLastStep.value) {
     currentStepIdx.value++;
     return;
@@ -47,38 +46,13 @@ const onSubmit = (values: unknown) => {
 
   emit("submit", values);
 };
-
-const onInvalidSubmit = ({
-  values,
-  errors,
-  results,
-}: {
-  values: unknown;
-  errors: unknown;
-  results: unknown;
-}) => {
-  console.log("Invalid submit attempt");
-  console.log("Values:", values);
-  console.log("Errors:", errors);
-  console.log("Results:", results);
-};
-
-// function goToPrev() {
-//   if (currentStepIdx.value === 0) {
-//     return;
-//   }
-
-//   currentStepIdx.value--;
-// }
 </script>
 
 <template>
   <Form
     :validation-schema="currentSchema"
     :keep-values="true"
-    :validate-on-mount="false"
     @submit="onSubmit"
-    @invalid-submit="onInvalidSubmit"
   >
     <slot />
   </Form>

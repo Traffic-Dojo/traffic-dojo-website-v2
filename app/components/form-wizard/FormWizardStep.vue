@@ -12,8 +12,6 @@ const shouldShow = computed(() => {
 
 const { meta, errorBag, isFieldTouched } = useFormContext();
 
-const disabled = computed(() => !meta.value.valid || !meta.value.dirty);
-
 const variants: Record<string, VariantType> = {
   hidden: { opacity: 0, y: -14 },
   visible: {
@@ -23,11 +21,27 @@ const variants: Record<string, VariantType> = {
   },
 };
 
-const props = defineProps<{
-  analytics?: { eventName: string; eventPayload?: JSON };
-}>();
+const props = withDefaults(
+  defineProps<{
+    analytics: { eventName: string; eventPayload?: JSON };
+    loading?: boolean;
+    labelDisabled?: string;
+    labelEnabled?: string;
+  }>(),
+  {
+    loading: false,
+    labelEnabled: "Next question",
+    labelDisabled: "Choose one or more",
+  },
+);
+
+const loading = toRef(props, "loading");
 
 const { sendAnalyticsEvent } = useAnalytics();
+
+const disabled = computed(
+  () => !meta.value.valid || !meta.value.dirty || loading.value,
+);
 
 watchEffect(() => {
   if (shouldShow.value && props.analytics) {
@@ -101,7 +115,9 @@ const errors = computed(() =>
           },
         ]"
       >
-        <span>{{ disabled ? "Choose one or more" : "Next question" }}</span>
+        <span>{{
+          disabled ? labelDisabled : loading ? "Loading..." : labelEnabled
+        }}</span>
 
         <svg
           v-if="!disabled"

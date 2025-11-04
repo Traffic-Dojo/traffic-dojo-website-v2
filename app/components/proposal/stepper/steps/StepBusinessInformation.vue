@@ -2,17 +2,26 @@
 import FormWizardStep from "../../../form-wizard/FormWizardStep.vue";
 import AppInput from "../../../inputs/AppInput.vue";
 import AppTelephoneInput from "../../../inputs/AppTelephoneInput.vue";
+
+defineProps({
+  loading: { type: Boolean, required: true },
+  error: { type: String, required: false, default: null },
+});
 </script>
 
 <template>
-  <FormWizardStep :analytics="{ eventName: 'step_business_information' }">
+  <FormWizardStep
+    :loading="loading"
+    :analytics="{ eventName: 'step_business_information' }"
+    label-enabled="Submit"
+  >
     <template #title>
       Enter your email and <br />
       get proposal request
     </template>
 
     <div
-      class="grid grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-3 md:gap-x-12 md:gap-y-5"
+      class="flex flex-col gap-x-8 gap-y-6 md:grid md:grid-cols-2 md:gap-x-12 md:gap-y-5"
     >
       <AppInput
         label="Your Name*"

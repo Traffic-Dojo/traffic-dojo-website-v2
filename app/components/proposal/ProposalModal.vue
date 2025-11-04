@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import type z from "zod";
+import type { ProposalSchema } from "~~/schemas/proposal";
+
 import FormWizard from "../form-wizard/FormWizard.vue";
 
 import {
@@ -16,6 +19,7 @@ import StepMarketingBudget from "./stepper/steps/StepMarketingBudget.vue";
 import StepBusinessInformation from "./stepper/steps/StepBusinessInformation.vue";
 
 import AppModal from "../AppModal.vue";
+import ProposalSuccessMessage from "~/components/proposal/ProposalSuccessMessage.vue";
 
 const validationSchema = [
   CurrentSituationSchema,
@@ -25,8 +29,24 @@ const validationSchema = [
   BusinessInformationSchema,
 ];
 
-function onSubmit(data: unknown) {
-  console.log("data", data);
+const isLoading = ref(false);
+const isSubmitted = ref(false);
+const error = ref<string | null>(null);
+
+function onSubmit(values: z.infer<typeof ProposalSchema>) {
+  isLoading.value = true;
+  error.value = null;
+
+  $fetch("/api/proposal", { body: values, method: "POST" })
+    .then(() => {
+      isSubmitted.value = true;
+    })
+    .catch((error) => {
+      error.value = error.message;
+    })
+    .finally(() => {
+      isLoading.value = false;
+    });
 }
 </script>
 
@@ -44,13 +64,19 @@ function onSubmit(data: unknown) {
       <slot />
     </template>
 
-    <template #content>
-      <FormWizard :validation-schema="validationSchema" @submit="onSubmit">
+    <template #content="{ closeModal }">
+      <ProposalSuccessMessage v-if="isSubmitted" @close="closeModal" />
+
+      <FormWizard
+        v-else
+        :validation-schema="validationSchema"
+        @submit="onSubmit"
+      >
         <StepCurrentSituation />
         <StepTargetMarket />
         <StepMarketingNeeds />
         <StepMarketingBudget />
-        <StepBusinessInformation />
+        <StepBusinessInformation :loading="isLoading" :error="error" />
       </FormWizard>
     </template>
   </AppModal>

@@ -101,7 +101,7 @@ function closeModal() {
 
           <DialogDescription v-else>{{ description.label }}</DialogDescription>
 
-          <slot name="content" :open :close-modal />
+          <slot name="content" :open="open" :close-modal="closeModal" />
 
           <DialogClose
             v-if="withClose"
