@@ -58,10 +58,12 @@ const subscribeToEmails: SubmissionHandler<
         <Form
           v-slot="{ isSubmitting, handleSubmit }"
           :validation-schema="toTypedSchema(EmailSubscriptionSchema)"
-          class="flex w-full max-w-[200px] flex-col items-center gap-4 md:max-w-full"
           as="div"
         >
-          <form @submit="handleSubmit($event, subscribeToEmails)">
+          <form
+            class="flex w-full max-w-[200px] flex-col items-center gap-4 md:max-w-full"
+            @submit="handleSubmit($event, subscribeToEmails)"
+          >
             <Field
               name="email"
               type="email"
