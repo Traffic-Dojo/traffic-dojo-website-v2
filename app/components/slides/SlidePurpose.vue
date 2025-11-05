@@ -175,8 +175,8 @@ const contentVariants: Record<string, VariantType> = {
           transition: { duration: 2 },
         }"
       >
-        <source src="~/assets/video/rocket.webm" type="video/webm" />
         <source src="~/assets/video/rocket.mov" type="video/quicktime" />
+        <source src="~/assets/video/rocket.webm" type="video/webm" />
       </motion.video>
     </div>
   </AppSection>
