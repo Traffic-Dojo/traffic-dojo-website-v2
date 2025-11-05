@@ -36,7 +36,7 @@ import { motion } from "motion-v";
           :in-view-options="{ margin: '-300px 0px' }"
         >
           <img
-            src="~/assets/images/statue.png"
+            src="~/assets/images/statue.webp"
             alt="Statue of Freedom"
             class="max-h-[70vh] min-h-[400px] md:max-h-screen"
           />
@@ -52,7 +52,7 @@ import { motion } from "motion-v";
           while-in-view="visible"
         >
           <img
-            src="~/assets/images/city.png"
+            src="~/assets/images/city.webp"
             alt="Building of New York City"
             class="h-full w-full"
           />
