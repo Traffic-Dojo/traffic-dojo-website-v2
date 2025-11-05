@@ -4,7 +4,7 @@ import {
   type PreviewArticle,
 } from "~~/server/utils/sanity/queries";
 import { sanityClient } from "~~/server/utils/sanity/client";
-import { stagger, type VariantType } from "motion-v";
+import { stagger, type VariantType, motion } from "motion-v";
 
 definePageMeta({
   layout: "blog",

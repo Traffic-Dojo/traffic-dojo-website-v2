@@ -6,6 +6,7 @@ import {
 } from "~~/server/utils/sanity/queries";
 import { PortableText } from "@portabletext/vue";
 import AppLegend from "~/components/AppLegend.vue";
+import { motion } from "motion-v";
 
 definePageMeta({
   layout: "blog",
@@ -21,6 +22,15 @@ const { data } = useAsyncData<PreviewArticle[]>(
 );
 
 const article = computed(() => data.value[0]!);
+
+useSeoMeta({
+  title: article.value.title,
+  ogTitle: article.value.title,
+  description: article.value.description,
+  ogDescription: article.value.description,
+  ogImage: article.value.full,
+  twitterCard: "summary_large_image",
+});
 </script>
 
 <template>
