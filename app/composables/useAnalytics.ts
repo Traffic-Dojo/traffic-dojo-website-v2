@@ -9,7 +9,7 @@ export const useAnalytics = () => {
     gtag("event", eventName, eventPayload);
 
     if (window && "fbq" in window && typeof window.fbq === "function") {
-      window.fbq("track", eventName, eventPayload);
+      window.fbq("trackCustom", eventName, eventPayload);
     }
   }
 

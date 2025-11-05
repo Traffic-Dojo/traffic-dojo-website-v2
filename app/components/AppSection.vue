@@ -10,7 +10,7 @@ const id = props.id ? sections[props.id].id : undefined;
 
 <template>
   <motion.div
-    class="absolute inset-0 z-0"
+    class="absolute inset-0 z-0 *:pointer-events-none!"
     :initial="{ opacity: 0 }"
     :while-in-view="{ opacity: 1 }"
     :in-view-options="{ margin: '-200px 0px' }"
