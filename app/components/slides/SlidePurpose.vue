@@ -176,6 +176,7 @@ const contentVariants: Record<string, VariantType> = {
         }"
       >
         <source src="~/assets/video/rocket.webm" type="video/webm" />
+        <source src="~/assets/video/rocket.mov" type="video/quicktime" />
       </motion.video>
     </div>
   </AppSection>
