@@ -88,11 +88,17 @@ import { motion } from "motion-v";
           </p>
         </motion.div>
 
-        <img
-          src="~/assets/images/newyork.png"
+        <motion.div
+          initial="hidden"
+          while-in-view="visible"
+          :variants="{
+            hidden: { x: -40, opacity: 0, transition: { duration: 2 } },
+            visible: { x: 0, opacity: 1, transition: { duration: 2 } },
+          }"
           class="relative max-w-[360px] translate-x-[-25%] md:hidden"
-          alt="New York"
-        />
+        >
+          <img src="~/assets/images/newyork.png" alt="New York" />
+        </motion.div>
       </div>
     </div>
   </AppSection>
