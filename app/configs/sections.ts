@@ -13,5 +13,6 @@ export const sections = {
     href: "/#what-we-can-do",
   },
   contacts: { label: "Contact Us", id: "contact-us", href: "/#contact-us" },
-  blog: { label: "Blog", id: "blog", href: "/blog" },
+  // Temporarily disabled
+  // blog: { label: "Blog", id: "blog", href: "/blog" },
 };
