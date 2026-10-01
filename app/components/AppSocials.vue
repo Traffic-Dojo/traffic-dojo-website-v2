@@ -4,20 +4,11 @@ import { useAppConfig } from "#app";
 import LinkedInSmall from "./../assets/images/socials/linkedin.svg";
 import LinkedInLarge from "./../assets/images/socials/linkedin_full.svg";
 
-import WhatsAppSmall from "./../assets/images/socials/whatsapp.svg";
-import WhatsAppLarge from "./../assets/images/socials/whatsapp_full.svg";
-
 defineProps<{ size: "small" | "large" }>();
 
 const { socials } = useAppConfig();
 
 const socialLinks = [
-  {
-    name: "WhatsApp",
-    href: socials.whatsapp,
-    small: WhatsAppSmall,
-    large: WhatsAppLarge,
-  },
   {
     name: "LinkedIn",
     href: socials.linkedin,
@@ -33,7 +24,12 @@ const socialLinks = [
     :class="{ 'hidden sm:flex': size === 'small' }"
   >
     <li v-for="{ name, href, small, large } in socialLinks" :key="name">
-      <a :href="href" target="_blank" class="rounded-sm p-1">
+      <a
+        :href="href"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-sm p-1"
+      >
         <img :src="size === 'small' ? small : large" :alt="name" />
       </a>
     </li>

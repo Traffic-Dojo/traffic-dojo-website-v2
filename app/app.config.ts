@@ -10,7 +10,6 @@ export default defineAppConfig({
   consult_link:
     "https://calendly.com/d/ckmp-37t-5g8/traffic-dojo-free-consultation",
   socials: {
-    whatsapp: "https://wa.me/message/3FKKFYNDVLZ7N1",
     linkedin: "https://www.linkedin.com/company/103803714",
   },
   contacts: [
