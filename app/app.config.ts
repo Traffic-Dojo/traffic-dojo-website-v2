@@ -19,8 +19,8 @@ export default defineAppConfig({
       event: "Contacts_Email",
     },
     {
-      name: "+1 (646) 917-8329",
-      href: "tel:+1 (646) 917-8329",
+      name: "+1 (347) 928-9618",
+      href: "tel:+13479289618",
       event: "Contacts_Telephone",
     },
   ],

@@ -14,7 +14,7 @@ import { motion } from "motion-v";
     >
       <div class="relative contents md:flex md:h-full md:items-center">
         <motion.div
-          class="absolute right-0 hidden max-w-[360px] translate-x-[-18%] md:block md:max-w-full"
+          class="absolute right-0 hidden translate-x-[-18%] md:block"
           :variants="{
             hidden: { x: -40, opacity: 0, transition: { duration: 1 } },
             visible: { x: 0, opacity: 1, transition: { duration: 2 } },
@@ -22,7 +22,13 @@ import { motion } from "motion-v";
           initial="hidden"
           while-in-view="visible"
         >
-          <img src="~/assets/images/newyork.png" alt="New York" />
+          <div
+            class="location-card w-[min(46vw,760px)]"
+            aria-label="Southern California-based team"
+          >
+            <span>Southern California</span>
+            <span>based team</span>
+          </div>
         </motion.div>
 
         <motion.div
@@ -36,9 +42,9 @@ import { motion } from "motion-v";
           :in-view-options="{ margin: '-300px 0px' }"
         >
           <img
-            src="~/assets/images/statue.webp"
-            alt="Statue of Freedom"
-            class="max-h-[70vh] min-h-[400px] md:max-h-screen"
+            src="~/assets/images/california-bear.webp"
+            alt="Stylized California grizzly bear sculpture"
+            class="max-h-[62vh] min-h-[340px] w-auto md:max-h-[78vh]"
           />
         </motion.div>
 
@@ -52,8 +58,8 @@ import { motion } from "motion-v";
           while-in-view="visible"
         >
           <img
-            src="~/assets/images/city.webp"
-            alt="Building of New York City"
+            src="~/assets/images/southern-california-sunset.webp"
+            alt="Southern California sunset with palm trees and coastal mountains"
             class="h-full w-full"
           />
         </motion.div>
@@ -97,7 +103,13 @@ import { motion } from "motion-v";
           }"
           class="relative max-w-[360px] translate-x-[-25%] md:hidden"
         >
-          <img src="~/assets/images/newyork.png" alt="New York" />
+          <div
+            class="location-card w-[min(86vw,360px)]"
+            aria-label="Southern California-based team"
+          >
+            <span>Southern California</span>
+            <span>based team</span>
+          </div>
         </motion.div>
       </div>
     </div>
@@ -105,6 +117,31 @@ import { motion } from "motion-v";
 </template>
 
 <style scoped>
+.location-card {
+  aspect-ratio: 1135 / 343;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(255 255 255 / 55%);
+  border-radius: clamp(22px, 3vw, 48px);
+  background: linear-gradient(180deg, #1c376b 0%, #17305d 58%, #2e4674 100%);
+  box-shadow:
+    inset 0 0 36px rgb(255 255 255 / 10%),
+    0 18px 45px rgb(0 0 0 / 24%);
+  color: white;
+  font-size: clamp(1rem, 2.4vw, 2.6rem);
+  font-weight: 700;
+  line-height: 0.95;
+  text-align: center;
+  text-transform: uppercase;
+  transform: rotate(-2deg);
+}
+
+.location-card span:first-child {
+  margin-bottom: 0.3em;
+}
+
 .gradient-blue {
   --size: max(700px, 100svw);
 
