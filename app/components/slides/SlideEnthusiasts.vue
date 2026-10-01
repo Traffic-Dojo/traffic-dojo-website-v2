@@ -49,7 +49,7 @@ import { motion } from "motion-v";
         </motion.div>
 
         <motion.div
-          class="absolute right-0 bottom-[8%] left-0 -z-20 translate-y-1/4 md:inset-x-auto md:bottom-auto md:-ml-20 md:block"
+          class="absolute right-0 -bottom-[10%] left-0 -z-20 md:top-1/2 md:right-auto md:bottom-auto md:left-0 md:-ml-20 md:w-[min(48vw,720px)] md:-translate-y-1/2"
           :variants="{
             hidden: { x: 40, opacity: 0, transition: { duration: 1 } },
             visible: { x: 0, opacity: 1, transition: { duration: 2 } },
@@ -58,9 +58,9 @@ import { motion } from "motion-v";
           while-in-view="visible"
         >
           <img
-            src="~/assets/images/southern-california-sunset.webp"
-            alt="Southern California sunset with palm trees and coastal mountains"
-            class="h-auto w-[150vw] max-w-none translate-x-[-18%] md:h-full md:w-full md:max-w-full md:translate-x-0"
+            src="~/assets/images/southern-california-sunset-square.webp"
+            alt="Square Southern California sunset with palm trees and coastal mountains"
+            class="h-auto w-[140vw] max-w-none translate-x-[-14%] brightness-[0.58] md:w-full md:max-w-full md:translate-x-0 md:brightness-90"
           />
         </motion.div>
       </div>
