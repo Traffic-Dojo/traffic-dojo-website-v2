@@ -32,7 +32,7 @@ import { motion } from "motion-v";
         </motion.div>
 
         <motion.div
-          class="absolute top-1/2 right-0 translate-x-2/5 -translate-y-1/2 overflow-hidden sm:translate-x-1/6 md:z-10 md:translate-x-1/4"
+          class="absolute top-[67%] right-0 translate-x-2/5 -translate-y-1/2 overflow-hidden sm:translate-x-1/6 md:top-1/2 md:z-10 md:translate-x-1/4"
           :variants="{
             hidden: { x: 40, opacity: 0, transition: { duration: 0.8 } },
             visible: { x: 0, opacity: 1, transition: { duration: 2 } },
@@ -44,12 +44,12 @@ import { motion } from "motion-v";
           <img
             src="~/assets/images/california-bear.webp"
             alt="Stylized California grizzly bear sculpture"
-            class="max-h-[62vh] min-h-[340px] w-auto md:max-h-[78vh]"
+            class="max-h-[42svh] min-h-0 w-auto md:max-h-[78vh] md:min-h-[340px]"
           />
         </motion.div>
 
         <motion.div
-          class="absolute bottom-0 -z-20 translate-y-1/4 md:bottom-auto md:-ml-20 md:block"
+          class="absolute right-0 bottom-[8%] left-0 -z-20 translate-y-1/4 md:inset-x-auto md:bottom-auto md:-ml-20 md:block"
           :variants="{
             hidden: { x: 40, opacity: 0, transition: { duration: 1 } },
             visible: { x: 0, opacity: 1, transition: { duration: 2 } },
@@ -60,12 +60,14 @@ import { motion } from "motion-v";
           <img
             src="~/assets/images/southern-california-sunset.webp"
             alt="Southern California sunset with palm trees and coastal mountains"
-            class="h-full w-full"
+            class="h-auto w-[150vw] max-w-none translate-x-[-18%] md:h-full md:w-full md:max-w-full md:translate-x-0"
           />
         </motion.div>
       </div>
 
-      <div class="relative z-20 flex flex-col gap-[min(10svh,120px)]">
+      <div
+        class="relative z-20 flex flex-col gap-[min(6svh,64px)] md:gap-[min(10svh,120px)]"
+      >
         <motion.div
           class="section-content flex flex-col gap-6"
           :variants="{
@@ -101,7 +103,7 @@ import { motion } from "motion-v";
             hidden: { x: -40, opacity: 0, transition: { duration: 2 } },
             visible: { x: 0, opacity: 1, transition: { duration: 2 } },
           }"
-          class="relative max-w-[360px] md:hidden"
+          class="relative -mt-6 max-w-[360px] md:mt-0 md:hidden"
         >
           <div
             class="location-card w-[min(86vw,360px)]"
