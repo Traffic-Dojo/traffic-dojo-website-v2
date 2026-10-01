@@ -14,7 +14,7 @@ import { motion } from "motion-v";
     >
       <div class="relative contents md:flex md:h-full md:items-center">
         <motion.div
-          class="absolute right-0 hidden translate-x-[-18%] md:block"
+          class="absolute left-4 hidden md:block"
           :variants="{
             hidden: { x: -40, opacity: 0, transition: { duration: 1 } },
             visible: { x: 0, opacity: 1, transition: { duration: 2 } },
@@ -23,7 +23,7 @@ import { motion } from "motion-v";
           while-in-view="visible"
         >
           <div
-            class="location-card w-[min(46vw,760px)]"
+            class="location-card w-[min(30vw,380px)]"
             aria-label="Southern California-based team"
           >
             <span>Southern California</span>
@@ -101,7 +101,7 @@ import { motion } from "motion-v";
             hidden: { x: -40, opacity: 0, transition: { duration: 2 } },
             visible: { x: 0, opacity: 1, transition: { duration: 2 } },
           }"
-          class="relative max-w-[360px] translate-x-[-25%] md:hidden"
+          class="relative max-w-[360px] md:hidden"
         >
           <div
             class="location-card w-[min(86vw,360px)]"
@@ -130,7 +130,7 @@ import { motion } from "motion-v";
     inset 0 0 36px rgb(255 255 255 / 10%),
     0 18px 45px rgb(0 0 0 / 24%);
   color: white;
-  font-size: clamp(1rem, 2.4vw, 2.6rem);
+  font-size: clamp(0.85rem, 1.35vw, 1.45rem);
   font-weight: 700;
   line-height: 0.95;
   text-align: center;
