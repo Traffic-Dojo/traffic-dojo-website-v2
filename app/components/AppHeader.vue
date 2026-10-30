@@ -42,12 +42,11 @@ const { sendAnalyticsEvent } = useAnalytics();
 
         <li class="hidden sm:inline">
           <NuxtLink
-            target="_blank"
             :href="consult_link"
             class="cursor-pointer rounded-full bg-white px-6 py-2 text-sm leading-none whitespace-nowrap text-black"
-            @click="sendAnalyticsEvent('schedule_call')"
+            @click="sendAnalyticsEvent('contact_email_click')"
           >
-            Schedule a Call
+            Discuss your project
           </NuxtLink>
         </li>
       </ul>
