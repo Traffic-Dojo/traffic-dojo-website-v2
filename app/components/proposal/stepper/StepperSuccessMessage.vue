@@ -19,8 +19,7 @@ const emit = defineEmits<{
           <span class="text-4xl font-semibold sm:text-7xl">Thank you!</span>
         </div>
         <p class="sm:text-2xl">
-          Your contacts has been sent and we are <br />
-          already preparing the best offer for you.
+          Your inquiry has been saved. We will review it and contact you.
         </p>
       </div>
 
