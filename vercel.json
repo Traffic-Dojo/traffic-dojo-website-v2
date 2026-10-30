@@ -1,8 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "git": {
-    "deploymentEnabled": { "ops01/intake-crm-workspace-20261030": false }
-  },
   "crons": [
     { "path": "/api/internal/lead-notifications", "schedule": "0 16 * * *" }
   ]
