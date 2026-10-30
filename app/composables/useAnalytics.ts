@@ -8,7 +8,7 @@ export const useAnalytics = () => {
 
     gtag("event", eventName, eventPayload);
 
-    if (window && "fbq" in window && typeof window.fbq === "function") {
+    if (typeof window !== "undefined" && "fbq" in window && typeof window.fbq === "function") {
       window.fbq("trackCustom", eventName, eventPayload);
     }
   }
