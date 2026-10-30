@@ -22,11 +22,12 @@ const { value, handleBlur, errorMessage, handleChange, meta } = useField(
         'text-gray-secondary': !(errorMessage && meta.touched),
       }"
     >
-      Phone Number
+      Phone number*
     </label>
 
     <VueTelInput
       mode="international"
+      :input-options="{ id: name, name, required: true }"
       :value
       :name="name"
       :placeholder
