@@ -8,7 +8,7 @@ export default defineAppConfig({
   initialSwiperConfig,
   sections,
   consult_link:
-    "https://calendly.com/d/ckmp-37t-5g8/traffic-dojo-free-consultation",
+    "mailto:maksim@traffic-dojo.com?subject=Traffic%20Dojo%20project%20inquiry",
   socials: {
     linkedin: "https://www.linkedin.com/company/103803714",
   },
