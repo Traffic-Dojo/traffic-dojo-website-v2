@@ -1,6 +1,11 @@
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
+  // The existing Vercel project has Fluid Compute disabled (15s default).
+  // A five-job notification batch can await token refresh and Gmail responses.
+  nitro: {
+    vercel: { functions: { maxDuration: 180 } },
+  },
   routeRules: {
     "/": { prerender: true },
     "/blog/**": { prerender: false, ssr: true },
@@ -9,7 +14,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       title:
-        "Traffic Dojo - Digital Marketing agency and Lead Generation Services",
+        "Traffic Dojo | Digital Marketing & Lead Generation",
       htmlAttrs: { lang: "en" },
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
     },

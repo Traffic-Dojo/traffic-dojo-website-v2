@@ -14,10 +14,11 @@ defineProps({
     :loading="loading"
     :analytics="{ eventName: 'step_business_information' }"
     label-enabled="Submit"
+    label-disabled="Complete your details"
   >
     <template #title>
-      Enter your email and <br />
-      get proposal request
+      Tell us about <br />
+      your business
     </template>
 
     <div
@@ -47,8 +48,7 @@ defineProps({
       <AppInput
         label="Website (if applicable)"
         name="website"
-        input-addon="https://"
-        placeholder="Enter your website"
+        placeholder="example.com"
       />
 
       <AppTelephoneInput name="phone" />
@@ -57,8 +57,12 @@ defineProps({
         label="Anything else you'd like to share? (if applicable)"
         name="comment"
         class-name="col-span-2 md:col-span-3"
-        placeholder="Enter your commentary"
+        placeholder="What would you like to improve?"
       />
     </div>
+    <p v-if="error" role="alert" aria-live="polite" class="text-danger mt-4">
+      {{ error }} You can also email
+      <a href="mailto:maksim@traffic-dojo.com" class="underline">maksim@traffic-dojo.com</a>.
+    </p>
   </FormWizardStep>
 </template>

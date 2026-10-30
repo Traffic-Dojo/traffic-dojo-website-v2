@@ -18,19 +18,21 @@ defineEmits({
 const { sendAnalyticsEvent } = useAnalytics();
 
 const isSubmitted = ref(false);
+const submitError = ref<string | null>(null);
 
 const subscribeToEmails: SubmissionHandler<
   z.infer<typeof EmailSubscriptionSchema>
 > = async (values, actions) => {
-  await $fetch("/api/subscribe", {
-    body: values,
-    method: "POST",
-  });
-
-  sendAnalyticsEvent("subscribe_email");
-  actions.resetForm();
-
-  isSubmitted.value = true;
+  submitError.value = null;
+  try {
+    const receipt = await $fetch<{ saved: boolean }>("/api/subscribe", { body: values, method: "POST" });
+    if (!receipt.saved) throw new Error("Missing receipt");
+    isSubmitted.value = true;
+    actions.resetForm();
+    try { sendAnalyticsEvent("subscription_saved"); } catch { /* no PII logging */ }
+  } catch {
+    submitError.value = "We could not save your subscription. Please try again.";
+  }
 };
 </script>
 
@@ -74,6 +76,7 @@ const subscribeToEmails: SubmissionHandler<
             />
 
             <ErrorMessage class="text-danger" name="email" />
+            <p v-if="submitError" role="alert" class="text-danger">{{ submitError }}</p>
 
             <button
               type="submit"
@@ -102,7 +105,7 @@ const subscribeToEmails: SubmissionHandler<
           <span class="text-xl font-medium sm:text-3xl md:text-6xl"
             >Thank you!</span
           >
-          <span class="md:text-lg">Your email has been sent!</span>
+          <span class="md:text-lg">Your subscription has been saved.</span>
         </div>
       </motion.div>
     </AnimatePresence>

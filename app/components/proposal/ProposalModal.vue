@@ -31,31 +31,47 @@ const validationSchema = [
 
 const isLoading = ref(false);
 const isSubmitted = ref(false);
+const savedReceiptId = ref<string | null>(null);
 const error = ref<string | null>(null);
 
-function onSubmit(values: z.infer<typeof ProposalSchema>) {
+const requestId = ref<string | null>(null);
+const requestPayload = ref<string | null>(null);
+const { sendAnalyticsEvent } = useAnalytics();
+
+async function onSubmit(values: z.infer<typeof ProposalSchema>) {
+  if (isLoading.value || isSubmitted.value) return;
   isLoading.value = true;
   error.value = null;
-
-  $fetch("/api/proposal", { body: values, method: "POST" })
-    .then(() => {
-      isSubmitted.value = true;
-    })
-    .catch((error) => {
-      error.value = error.message;
-    })
-    .finally(() => {
-      isLoading.value = false;
+  const payloadKey = JSON.stringify(values);
+  if (requestPayload.value !== payloadKey) {
+    requestId.value = crypto.randomUUID();
+    requestPayload.value = payloadKey;
+  }
+  requestId.value ??= crypto.randomUUID();
+  try {
+    const receipt = await $fetch<{ saved: boolean; receiptId: string }>("/api/proposal", {
+      body: { ...values, requestId: requestId.value }, method: "POST",
     });
+    if (!receipt.saved || !receipt.receiptId) throw new Error("Missing receipt");
+    savedReceiptId.value = receipt.receiptId;
+    isSubmitted.value = true;
+    // Measurement must never undo a confirmed save or include contact details.
+    try { sendAnalyticsEvent("proposal_saved"); } catch { /* no PII logging */ }
+  } catch {
+    error.value = "We could not confirm your inquiry. Please try again.";
+  } finally {
+    isLoading.value = false;
+  }
 }
+
 </script>
 
 <template>
   <AppModal
-    :title="{ hidden: true, label: 'Proposal form' }"
+    :title="{ hidden: true, label: 'Project inquiry' }"
     :description="{
       hidden: true,
-      label: 'Asking user business information',
+      label: 'Tell us about your business and marketing goals',
     }"
     :with-close="true"
     variant="center"
@@ -65,7 +81,7 @@ function onSubmit(values: z.infer<typeof ProposalSchema>) {
     </template>
 
     <template #content="{ closeModal }">
-      <ProposalSuccessMessage v-if="isSubmitted" @close="closeModal" />
+      <ProposalSuccessMessage v-if="isSubmitted" :receipt-id="savedReceiptId" @close="closeModal" />
 
       <FormWizard
         v-else

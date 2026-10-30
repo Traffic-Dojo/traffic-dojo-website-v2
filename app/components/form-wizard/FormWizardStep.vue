@@ -31,7 +31,7 @@ const props = withDefaults(
   {
     loading: false,
     labelEnabled: "Next question",
-    labelDisabled: "Choose one or more",
+    labelDisabled: "Select an option",
   },
 );
 
@@ -61,8 +61,6 @@ watchEffect(() => {
  */
 const errors = computed(() =>
   Object.entries(errorBag.value).reduce((acc, [fieldName, fieldErrors]) => {
-    console.log(fieldName, fieldErrors);
-
     if (isFieldTouched(fieldName) && fieldErrors) {
       acc.push(...fieldErrors);
     }
@@ -116,7 +114,7 @@ const errors = computed(() =>
         ]"
       >
         <span>{{
-          disabled ? labelDisabled : loading ? "Loading..." : labelEnabled
+          loading ? "Sending..." : disabled ? labelDisabled : labelEnabled
         }}</span>
 
         <svg

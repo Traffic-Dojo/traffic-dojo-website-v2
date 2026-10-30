@@ -21,13 +21,13 @@ import AppHeader from "../components/AppHeader.vue";
 const { initialSwiperConfig } = useAppConfig();
 
 useSeoMeta({
-  title: "Traffic Dojo - Digital Marketing agency and Lead Generation Services",
+  title: "Traffic Dojo | Digital Marketing & Lead Generation",
   ogTitle:
-    "Traffic Dojo - Digital Marketing agency and Lead Generation Services",
+    "Traffic Dojo | Digital Marketing & Lead Generation",
   description:
-    "Full services of online advertising: web development and web design, PPC management and social media marketing.",
+    "Southern California digital marketing team helping businesses with websites, SEO, paid advertising and lead generation.",
   ogDescription:
-    "Full services of online advertising: web development and web design, PPC management and social media marketing.",
+    "Southern California digital marketing team helping businesses with websites, SEO, paid advertising and lead generation.",
   ogImage: "/og.png",
   twitterCard: "summary_large_image",
 });

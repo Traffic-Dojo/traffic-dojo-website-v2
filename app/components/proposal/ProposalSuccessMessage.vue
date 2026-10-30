@@ -2,6 +2,7 @@
 import { motion } from "motion-v";
 
 defineEmits(["close"]);
+defineProps<{ receiptId: string | null }>();
 </script>
 
 <template>
@@ -13,9 +14,10 @@ defineEmits(["close"]);
     <span class="text-4xl font-semibold sm:text-7xl">Thank you!</span>
 
     <p class="sm:text-2xl">
-      Your contacts has been sent and we are already preparing the best offer
-      for you.
+      Your inquiry has been saved. We will review it and contact you using the details you provided.
     </p>
+
+    <p v-if="receiptId" class="text-sm break-all">Reference: {{ receiptId }}</p>
 
     <button
       class="bg-accent text-black-modal mx-auto w-fit cursor-pointer rounded-full px-12 py-3 text-xl sm:m-0"
