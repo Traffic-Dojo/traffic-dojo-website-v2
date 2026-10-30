@@ -9,7 +9,7 @@ const situations: {
   value: z.infer<typeof CurrentSituationSchema>["situation"];
 }[] = [
   { label: "I'm new to digital marketing!", value: "new" },
-  { label: "I'm working with a freelance!", value: "working" },
+  { label: "I'm working with a freelancer", value: "working" },
   { label: "I'm looking to replace my agency!", value: "looking" },
 ];
 </script>
